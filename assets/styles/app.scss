@@ -1,6 +1,30 @@
 @import "./scss/navbar.scss";
 @import "./scss/home.scss";
 @import "./scss/footer.scss";
+@import './scss/admin.scss';
+@import './scss/login.scss';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
+    textarea, input[type="text"] {
+        -webkit-appearance: none;
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-font
+    ::-webkit-scrollbar-track {
+        background: rgb(255, 255, 255);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(156, 155, 155);
+        border-radius: 15px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #c20f3f;
+    }

@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		{% if app.user %}
+			<div class="mb-3">
+				You are logged in as
+				{{ app.user.userIdentifier }},
+				<a href="{{ path('app_logout') }}">Logout</a>
+			</div>
+		{% endif %}
+		<div class = "back">
+			<a href = "{{ path('home.index')}}">Back to the main page</a>
+		</div>
+		<h1 class="connexionTitle">Connect to your account</h1>
+		<div class="blocConnexion">
+			<div class="blocConnexionForm">
+				<span class="edge"></span>
+				<span class="edge"></span>
+				<div class="blocConnexionImg"> {% verbatim %}{% endverbatim %}
+																			{% include '@svg_path/Logo_Exam1.svg' ignore missing %}
+																			{% include '@svg_path/Logo_Exam2.svg' ignore missing %}
+				</div>
+				<div class="blocConnexionInput">
+					<div class="form-group">
+						<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required>
+						<label for="inputUsername">Username</label>
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+						<label for="inputPassword">Password</label>
+						<div class="password-icon">
+							<i class = "arrow" data-feather="arrow-up-circle"></i>
+							<i class = "eye" data-feather="eye"></i>
+							<i class = "eyeoff" data-feather = "eye-off"></i>
+						</div>
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<input class = "submit" type="submit" value="Log in">
+					<a class = "notRegistered" href = "">Not a member yet ? Register here</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+			{{ encore_entry_script_tags('form') }}
+
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+  feather.replace();
+</script>
+{% endblock %}

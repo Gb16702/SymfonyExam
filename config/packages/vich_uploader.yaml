@@ -13,3 +13,8 @@ vich_uploader:
             uri_prefix: /images/voitures
             upload_destination: '%kernel.project_dir%/public/images/voitures'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        partials:
+            uri_prefix: /images/partials
+            upload_destination: '%kernel.project_dir%/public/images/partials'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

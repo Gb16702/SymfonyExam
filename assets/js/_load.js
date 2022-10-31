@@ -1,6 +1,13 @@
 const t = document.querySelector(".containerHomeTitle")
 const b = document.querySelector(".containerHomeBody")
 const h = document.querySelector(".containerHome")
+const body = document.body
+const html = document.documentElement
+let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+let height = window.innerHeight || document.documentElement.clientHeight ||  document.body.clientHeight
+
+
+// console.log(footer);
 
 h.style.position="relative"
 window.onload = function(){
@@ -12,7 +19,7 @@ window.onload = function(){
             t.style.top= "105%"
             t.style.display = "flex"
 
-            console.log(window.pageYoffset);
+            // console.log(window.pageYoffset);
             setTimeout(() => {
                 t.style.transition = "opacity 700ms, top 800ms"
                 t.style.position="absolute"
@@ -21,7 +28,7 @@ window.onload = function(){
                     t.style.top = "70%"
                     t.style.backgroundColor = "red"
                 }else {
-                    t.style.top = "98%"
+                    t.style.top = "90%"
                 }
                 t.style.height = "fit-content"
                 t.style.background = "transparent"
@@ -33,7 +40,11 @@ window.onload = function(){
     }else {
         executed = false
     }
+    const height = Math.max(document.body.getBoundingClientRect().height, html.getBoundingClientRect().height);
+    var calc = height - 450
+    // console.log(calc)
+
+
 }
 
-
-console.log(t);
+AOS.init();

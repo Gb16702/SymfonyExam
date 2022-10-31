@@ -1,11 +1,29 @@
 <div class="containerNav">
-	<nav class = "nav">
-		<ul class = "ul">
-			<li class ="li"><a class = "link" href="#">Home</a></li>
-			<li><a class = "link" href="#">Brands</a></li>
-			<li><a class = "link" href="#">Contact</a></li>
-			<li><a class = "link" href="#">Connexion</a></li>
-		</ul>
+	<nav
+		class="nav">
+		 <div class="Logo">
+		 	{% include '@svg_path/Logo_Exam_header.svg' ignore missing %}
+			{% include '@svg_path/Logo_Exam_header2.svg' ignore missing %}
+		 </div>
+		<div class="containerUl">
+			<ul class="ul">
+				<li class="li">
+					<a class="link" href="#">Home</a>
+				</li>
+				<li>
+					<a class="link" href="#">Marques</a>
+				</li>
+				<li>
+					<a class="link" href="#">Contact</a>
+				</li>
+				<li>
+					<a class="link" href="{{ path('app_login')}}">Connexion</a>
+				</li>
+			</ul>
+		</div>
+		<div class="blocFas">
+			<i class="fa-solid fa-magnifying-glass"></i>
+		</div>
 	</nav>
 	<div id="burger">
 		<div class="burgerBar"></div>
@@ -14,18 +32,10 @@
 	</div>
 	<div id="burgerMenu">
 		<ul>
-			<li>
-				<a href="#">Home</a>
-			</li>
-			<li>
-				<a href="#">Brands</a>
-			</li>
-			<li>
-				<a href="#">Contact</a>
-			</li>
-			<li>
-				<a href="#">Connexion</a>
-			</li>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Marques</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#">Connexion</a></li>
 		</ul>
 	</div>
 </div>

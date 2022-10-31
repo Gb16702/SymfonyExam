@@ -7,6 +7,21 @@ window.addEventListener('load', e => {
     const bar2 = document.querySelector(".burgerBar:nth-child(2)")
     const bar3 = document.querySelector(".burgerBar:last-child")
     const burgerMenu = document.querySelector("#burgerMenu")
+    const Logo3 = document.querySelector(".FIG3")
+    const Logo4 = document.querySelector(".FIG4")
+    console.log(Logo3);
+    const Logo3Path = document.querySelector(".FIG3 path")
+    console.log(Logo3Path);
+    const Logo3G = document.querySelector(".FIG3 g")
+    console.log(Logo3G);
+
+
+    const footer = document.querySelector(".containerFooter")
+    const fas = document.querySelector(".blocFas")
+    const body = document.body
+    const html = document.documentElement
+    const height = Math.max(document.body.getBoundingClientRect().height, html.getBoundingClientRect().height);
+    const calc =  window.pageYOffset
     console.log(body);
     console.log(links);
 
@@ -26,19 +41,36 @@ window.addEventListener('load', e => {
     let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
     let h = window.innerHeight || document.documentElement.clientHeight ||  document.body.clientHeight
 
-
     console.log(window.pageYOffset);
     document.addEventListener("scroll", e => {
-        if( window.pageYOffset > 700) {
+        if(height - window.pageYOffset < 1220) {
+            console.log(footer);
+        footer.classList.add("animate")
+        }else {
+            footer.classList.remove("animate")
+        }
+        if( window.pageYOffset > 600) {
+            Logo3.style.display = "none"
+            Logo4.style.display = "block"
+            // for(const liste of Logo3.children) {
+            //     console.log(liste.tagName);
+            //     liste.style.fill = "red"
+            //     console.log(liste.fill);
+            // }
+            Logo3Path.style.fill = "red"
             for(var i = 0; i <links.length; i++) {
                 links[i].style.color = "#3f4041"
                 links[links.length - 1].style.color = "rgb(215, 7, 7)"
             }
+            fas.style.color = "#3f4041"
             burgerBarGrey()
             containerNav.style.backgroundColor = "white"
         }else {
-            if(window.pageYOffset < 700 || window.pageYOffset) {
+            if(window.pageYOffset < 600 || window.pageYOffset) {
+                Logo3.style.display = ""
+                Logo4.style.display = "none"
                 burgerBarWhite()
+                fas.style.color = ""
                 if(!containerNav.classList.contains("open-menu")) {
                     containerNav.style.backgroundColor = "transparent"
                 }else {
@@ -51,7 +83,11 @@ window.addEventListener('load', e => {
                 }
             }
         }
+
     })
+    function isInViewport(footer) {
+
+    }
 
             burgerMenu.style.transition= (".6s")
             burger.addEventListener('click', function() {

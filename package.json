@@ -2,6 +2,10 @@
     "devDependencies": {
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",
+        "@fortawesome/fontawesome-free": "^6.2.0",
+        "@fortawesome/free-brands-svg-icons": "^6.2.0",
+        "@fortawesome/free-regular-svg-icons": "^6.2.0",
+        "@fortawesome/free-solid-svg-icons": "^6.2.0",
         "@hotwired/stimulus": "^3.0.0",
         "@symfony/stimulus-bridge": "^3.2.0",
         "@symfony/webpack-encore": "^4.0.0",
@@ -22,6 +26,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "aos": "^2.3.4",
+        "magnet-mouse": "github:fluffy-factory/magnet-mouse",
         "rellax": "^1.12.1",
         "sal.js": "^0.8.5",
         "simple-parallax-js": "^5.6.2"
