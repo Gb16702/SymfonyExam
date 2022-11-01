@@ -21,9 +21,9 @@
 
 
 
-		<div class = "backRegister">
+		{# <div class = "backRegister">
 			<a href = "{{ path('home.index')}}">Back to the main page</a>
-		</div>
+		</div> #}
 		<h1 class="registerTitle">Create your account</h1>
 		<div class="blocRegister">
 			<div class="blocRegisterForm">
@@ -75,7 +75,7 @@
 		check.style.background = "red"
 		check.style.color = "red"
 		check.style.borderRadius = "50px"
-		
+
 			check.addEventListener("click", c => {
 				if(check.classList.contains("active")) {
 					check.classList.remove("active")

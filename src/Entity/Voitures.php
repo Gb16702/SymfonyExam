@@ -25,7 +25,7 @@ class Voitures
     #[ORM\Column]
     private ?int $km = null;
 
-    #[ORM\OneToMany(mappedBy: 'voitures', targetEntity: ImagesVoitures::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'voitures', targetEntity: ImagesVoitures::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $images_imagesVoitures;
 
     #[ORM\ManyToOne(inversedBy: 'voitures')]
@@ -78,6 +78,17 @@ class Voitures
         return $this;
     }
 
+    public function getVoitures(): ?Voitures
+    {
+        return $this->voiture;
+    }
+
+    public function setVoitures(?Voitures $voiture): self
+    {
+        $this->voiture = $voiture;
+
+        return $this;
+    }
     /**
      * @return Collection<int, ImagesVoitures>
      */

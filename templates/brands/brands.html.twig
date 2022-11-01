@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body %}
+{% include "./partials/header.html.twig" %}
+    <div class="brandsContainer">
+    {% for marque in marqueCard %}
+        <div class="brandsCard">
+            <div class="brandsCardTop">
+            <div class="brandsCardImage" style = "background-image: url({{ vich_uploader_asset(marque, 'imageFile') }}); background-size: cover; background-position: center;"></div>
+            </div>
+            <div class="brandCardBottom">
+                    <h2>{{ marque.nom | capitalize }}</h2>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% include "./partials/footer.html.twig" %}
+
+<script>
+
+
+function getCurrentURL () {
+    return window.location.href
+  }
+  
+  const url = getCurrentURL()
+  const footer = document.querySelector(".containerFooter")
+
+  console.log(url);
+  if(window.location.href.indexOf("marques") > -1) {
+    footer.style.backgroundColor = "red"
+  }
+
+</script>
+{% endblock %}

@@ -39,6 +39,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Add brands', "fa-solid fa-layer-group", Marques::class);
         yield MenuItem::linkToCrud('Add pictures', "fa-solid fa-image-portrait", ImagesVoitures::class);
         yield MenuItem::linkToCrud('Add partials', "fa-solid fa-file-export", Partials::class);
-        yield MenuItem::linktoRoute('Back to the website', 'fa-solid fa-rotate-left', 'home.index',);
+        yield MenuItem::linktoRoute('Back to the website', 'fa-solid fa-rotate-left', 'home',);
     }
 }

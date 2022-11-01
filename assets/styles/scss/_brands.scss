@@ -1,0 +1,35 @@
+.brandsContainer {
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(21, 21, 21);
+    display: grid;
+    padding: 20px 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+.brandsCard {
+    background-color: black;
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+.brandsCardTop {
+    display: flex;
+    background-color: darkorchid;
+    // flex: 1;
+    min-height: 220px;
+    width: 100%;
+}
+.brandsCardImage {
+    width: 100%;
+    height: 100%;
+}
+.brandsCardBottom {
+    display: flex;
+    // flex: 2;
+    min-height: 100px;
+    width: 100%;
+}
+
+
