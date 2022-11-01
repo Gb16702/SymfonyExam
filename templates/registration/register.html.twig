@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+
+  {%
+	set classes = [
+		'content',
+		'node',
+		'custom',
+	]
+  %}
+
+
+
+{% block title %}Register{% endblock %}
+
+
+{% block body %}
+
+    {{ form_start(registrationForm) }}
+	<form method="post">
+
+
+
+		<div class = "backRegister">
+			<a href = "{{ path('home.index')}}">Back to the main page</a>
+		</div>
+		<h1 class="registerTitle">Create your account</h1>
+		<div class="blocRegister">
+			<div class="blocRegisterForm">
+				<span class="edgeRegister"></span>
+				<span class="edgeRegister"></span>
+				<div class="blocRegisterImg"> {% verbatim %}{% endverbatim %}
+																			{% include '@svg_path/Logo_Inscription!Hover.svg' ignore missing %}
+																			{% include '@svg_path/Logo_InscriptionHover.svg' ignore missing %}
+				</div>
+				<div class="blocRegisterInput">
+					<div class="form-groupRegister">
+						{{ form_row(registrationForm.username) }}
+					</div>
+					<div class="form-groupRegister">
+						 {{ form_row(registrationForm.plainPassword) }}
+						<div class="password-icon">
+							<i class = "arrowRegister" data-feather="arrow-up-circle"></i>
+							<i class = "eyeRegister" data-feather="eye"></i>
+							<i class = "eyeoffRegister" data-feather = "eye-off"></i>
+						</div>
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+					<div class="agreeTerms">{{ form_row(registrationForm.agreeTerms) }}</div>
+
+					<input id = "submitRegister" class = "submitRegister" type="submit" value="Register">
+					<a class = "registered" href ="{{ path('app_login') }}">Already registered ? Connect here</a>
+				</div>
+			</div>
+		</div>
+	</div>
+    {{ form_end(registrationForm) }}
+
+
+			{{ encore_entry_script_tags('register') }}
+			{{ encore_entry_link_tags('registerForm') }}
+
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+  feather.replace();
+</script>
+
+<script>
+		let check = document.getElementById("registration_form_agreeTerms")
+	function clicked() {
+		check.classList.add("active")
+		console.log(check)
+		check.style.background = "red"
+		check.style.color = "red"
+		check.style.borderRadius = "50px"
+		
+			check.addEventListener("click", c => {
+				if(check.classList.contains("active")) {
+					check.classList.remove("active")
+				}else {
+					check.classList.add("active")
+				}
+			})
+        }
+</script>
+{% endblock %}
+
