@@ -154,7 +154,7 @@ justify-content: center;
     color: #ccc;
 }
 
-input[type="submit"] {
+#submit {
     height: 40px;
     width: 100px;
     background-color: transparent;
@@ -170,7 +170,7 @@ input[type="submit"] {
 .submit {
     transition: transform .3s ease;
   }
-input[type="submit"]:hover {
+#submit:hover {
     background-position: 0;
     border: none;
     color: white;
