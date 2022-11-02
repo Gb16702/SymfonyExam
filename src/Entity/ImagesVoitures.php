@@ -38,6 +38,19 @@ class ImagesVoitures
         return $this->id;
     }
 
+    public function getVoitures(): ?Voitures
+    {
+        return $this->voitures;
+    }
+
+    public function setVoitures(?Voitures $voitures): self
+    {
+        $this->voitures = $voitures;
+
+        return $this;
+    }
+
+
     public function getImages(): ?string
     {
         return $this->Images;
