@@ -7,9 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
+#[UniqueEntity(fields: ['username'], message: 'Un autre utilisateur possède déjà ce nom, merci de le modifier')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -18,6 +19,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(type: "string", length: 180, unique: true)]
+    #[Assert\NotBlank(message: "Le champs de nom d'utilisateur est requis")]
+    #[Assert\Length(min: 3, max: 20, minMessage: "Votre nom d'utilisateur doit faire au moins 3 caractères", maxMessage: "Votre nom d'utilisateur ne peut pas faire plus de 20 caractères")]
     private ?string $username = null;
 
     #[ORM\Column(type: "json")]
@@ -27,6 +30,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column(type:"string")]
+    #[Assert\Length(min: 3, max: 20, minMessage: "Votre mot de passe doit faire au moins 3 caractères", maxMessage: "Votre mot de passe ne peut pas faire plus de 20 caractères")]
+    #[Assert\NotNull(message: "Le champs de mot de passe ne peut pas être vide")]
     private ?string $password = null;
 
     public function getId(): ?int
