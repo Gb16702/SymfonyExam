@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\VoituresRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\ImagesVoitures;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\VoituresRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: VoituresRepository::class)]
+#[Vich\Uploadable]
+
 class Voitures
 {
     #[ORM\Id]
@@ -96,6 +101,13 @@ class Voitures
     {
         return $this->images_imagesVoitures;
     }
+
+    // public function setImagesImagesVoitures(?ImagesVoitures $images_imagesVoitures): self
+    // {
+    //     $this -> images_imagesVoitures = $images_imagesVoitures;
+    //     return $this;
+    // }
+
 
     public function addImagesImagesVoiture(ImagesVoitures $imagesImagesVoiture): self
     {

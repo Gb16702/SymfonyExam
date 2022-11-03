@@ -50,20 +50,6 @@ class ImagesVoitures
         return $this;
     }
 
-
-    public function getImages(): ?string
-    {
-        return $this->Images;
-    }
-
-    public function setImages(string $Images): self
-    {
-        $this->Images = $Images;
-
-        return $this;
-    }
-
-
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -97,16 +83,6 @@ class ImagesVoitures
     public function getImageName(): ?string
     {
         return $this->imageName;
-    }
-
-    public function setImageSize(?int $imageSize): void
-    {
-        $this->imageSize = $imageSize;
-    }
-
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
     }
 
 }

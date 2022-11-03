@@ -4,16 +4,19 @@ namespace App\Controller;
 
 use App\Repository\MarquesRepository;
 use App\Repository\PartialsRepository;
+use App\Repository\VoituresRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController {
     #[Route('/', 'home', methods: ['GET'])]
-    public function index(MarquesRepository $marque, PartialsRepository $partials): Response {
+    public function index(MarquesRepository $marque, PartialsRepository $partials, VoituresRepository $voitures): Response {
         return $this->render('home.html.twig', [
-            "marques" => $marque->findAll(),
-            "marqueBg" =>$marque->find(6),
+            // "marques" => $marque->findAll(),
+            // "marqueBg" =>$marque->find(6),
+
+            "voitures" => $voitures->findBy([], $orderBy = null, $limit = 4),
              "header" => $partials->findOneBy([
                  "section" => "header"
              ]),
