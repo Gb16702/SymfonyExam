@@ -20,33 +20,35 @@
 		</div>
 	</div>
 		{% for voiture in voitures %}
-			<pre>
+		{# {% for image in imagesVoitures %} #}
+
+			{# <pre>
 				{{ dump(voiture.images_imagesVoitures[0]) }}
-			</pre>
+			</pre> #}
 		{% if loop.index is odd %}
 	<div class="containerHomeBody">
 			<div  class="containerHomeBodySlideA" style = 'background: white;'>
 				<div class="containerHomeBodySlideALeft">
 					<div class="containerHomeBodySlideALeftBloc" data-aos = 'fade-right' data-aos-offset="30" data-aos-easing="ease-in-sine">
-						{# <h2>L' {{voiture.nom}}: émissions de CO2 à partir de 46g / km</h2> #}
+						 <h2>L' {{voiture.nom}}: émissions de CO2 à partir de 46g / km</h2>
 						<h3 class="description">Ce modèle allie puissance, efficacité et confort. Alfa Romeo promet désormais une consomation moins élevée ainsi qu'un confort inégalé</h3>
 						<a class = "linkToCar" href="#" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine" >Découvrir l'Alfa Romeo Giulia</a>
 						<h4>Émissions de CO₂ combinées: 51–46 g / km</h4>
 					</div>
 				</div>
 				<div class="containerHomeBodySlideARight" >
-					{# <div class="containerHomeBodySlideARightBloc"  style="background-image: url({{ vich_uploader_asset(voiture.image_imagesVoitures, 'imageFile') }}); background-size: cover; background-position: left;"></div> #}
+					 {# <div class="containerHomeBodySlideARightBloc"  style="background-image: url({{ vich_uploader_asset(image, 'imageFile') }}); background-size: cover; background-position: left;"></div> #}
 				</div>
 			</div>
 		</div>
 		{% else %}
 			<div class="containerHomeBodySlideA" style = 'background: white;'>
 				<div class="containerHomeBodySlideARight2">
-					{# <div class="containerHomeBodySlideARightBloc" style="background-image: url({{ vich_uploader_asset(voiture.images_imagesVoitures, 'imageFile') }}); background-size: cover; background-position: left;"></div> #}
+					  {# <div class="containerHomeBodySlideARightBloc" style="background-image: url({{ vich_uploader_asset(image, 'imageFile') }}); background-size: cover; background-position: left;"></div> #}
 				</div>
 				<div class="containerHomeBodySlideALeft2">
 					<div class="containerHomeBodySlideALeftBloc2" data-aos = 'fade-left' data-aos-offset="30" data-aos-easing="ease-in-sine">
-						{# <h2>L' {{voiture.nom | capitalize}} : émissions de CO2 à partir de 46g / km</h2> #}
+						 <h2>L' {{voiture.nom }} : émissions de CO2 à partir de 46g / km</h2>
 						<h3 class="description">Ce modèle allie puissance, efficacité et confort. Alfa Romeo promet désormais une consomation moins élevée ainsi qu'un confort inégalé</h3>
 						<a class = "linkToCar" href="#" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine">Découvrir l'Alfa Romeo Giulia</a>
 						<h4>Émissions de CO₂ combinées: 51–46 g / km</h4>
@@ -55,6 +57,7 @@
 			</div>
 		</div>
 		{% endif %}
+		{# {% endfor %} #}
 	{% endfor %}
 	{% include "./partials/footer.html.twig" %}
 

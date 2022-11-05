@@ -81,7 +81,7 @@
 }
 .rowFooter:nth-child(2):before{
     content: "";
-    background-color: rgb(55, 55, 55);
+    background-color: var(--before, rgb(55, 55, 55));
     width: 2px;
     height: 30%;
     position: absolute;
@@ -92,7 +92,7 @@
         content: "";
         position: absolute;
         top: 50%;
-        background-color: rgb(55, 55, 55);
+        background-color: var(--after, rgb(55, 55, 55));
         width: 2px;
         height: 30%;
         left:100%

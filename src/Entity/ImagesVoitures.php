@@ -17,14 +17,13 @@ class ImagesVoitures
     private ?int $id = null;
 
 
-    #[Vich\UploadableField(mapping: 'voitures', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Vich\UploadableField(mapping: 'voitures', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string')]
     private ?string $imageName = null;
 
-    #[ORM\Column(type: 'integer')]
-    private ?int $imageSize = null;
+
 
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $updatedAt = null;

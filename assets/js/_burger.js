@@ -40,15 +40,15 @@ window.addEventListener('load', e => {
 
     let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
     let h = window.innerHeight || document.documentElement.clientHeight ||  document.body.clientHeight
-
     console.log(window.pageYOffset);
     document.addEventListener("scroll", e => {
         if(height - window.pageYOffset < 1220) {
             console.log(footer);
-        footer.classList.add("animate")
+            footer.classList.add("animate")
         }else {
             footer.classList.remove("animate")
         }
+        if(window.location.href.indexOf("home") > -1) {
         if( window.pageYOffset > 600) {
             Logo3.style.display = "none"
             Logo4.style.display = "block"
@@ -83,11 +83,8 @@ window.addEventListener('load', e => {
                 }
             }
         }
-
-    })
-    function isInViewport(footer) {
-
     }
+    })
 
             burgerMenu.style.transition= (".6s")
             burger.addEventListener('click', function() {
@@ -125,7 +122,7 @@ const body = document.body;
 
 let lastScroll = 0
 
-
+if(window.location.href.indexOf("home") > -1) {
 window.addEventListener("scroll", ()=> {
     const currentScroll = window.pageYOffset
     if(currentScroll <=0) {
@@ -141,6 +138,7 @@ window.addEventListener("scroll", ()=> {
     }
     lastScroll = currentScroll
 })
+}
 
 
 
