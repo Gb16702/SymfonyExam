@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\ImagesVoitures;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\VoituresRepository;
@@ -31,7 +30,7 @@ class Voitures
     private ?int $km = null;
 
     #[ORM\OneToMany(mappedBy: 'voitures', targetEntity: ImagesVoitures::class, orphanRemoval: true, cascade: ['persist'])]
-    private Collection $images_imagesVoitures;
+    private Collection $imagesVoitures;
 
     #[ORM\ManyToOne(inversedBy: 'voitures')]
     #[ORM\JoinColumn(nullable: false)]
@@ -39,7 +38,7 @@ class Voitures
 
     public function __construct()
     {
-        $this->images_imagesVoitures = new ArrayCollection();
+        $this->imagesVoitures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -83,48 +82,31 @@ class Voitures
         return $this;
     }
 
-    public function getVoitures(): ?Voitures
-    {
-        return $this->voiture;
-    }
 
-    public function setVoitures(?Voitures $voiture): self
-    {
-        $this->voiture = $voiture;
-
-        return $this;
-    }
     /**
      * @return Collection<int, ImagesVoitures>
      */
-    public function getImagesImagesVoitures(): Collection
+    public function getImagesVoitures(): Collection
     {
-        return $this->images_imagesVoitures;
+        return $this->imagesVoitures;
     }
 
-    //  public function setImagesImagesVoitures(?ImagesVoitures $images_imagesVoitures): self
-    //  {
-    //      $this -> images_imagesVoitures = $images_imagesVoitures;
-    //      return $this;
-    //  }
-
-
-    public function addImagesImagesVoiture(ImagesVoitures $imagesImagesVoiture): self
+    public function addImagesVoiture(ImagesVoitures $imagesVoiture): self
     {
-        if (!$this->images_imagesVoitures->contains($imagesImagesVoiture)) {
-            $this->images_imagesVoitures->add($imagesImagesVoiture);
-            $imagesImagesVoiture->setVoitures($this);
+        if (!$this->imagesVoitures->contains($imagesVoiture)) {
+            $this->imagesVoitures->add($imagesVoiture);
+            $imagesVoiture->setVoitures($this);
         }
 
         return $this;
     }
 
-    public function removeImagesImagesVoiture(ImagesVoitures $imagesImagesVoiture): self
+    public function removeImagesVoiture(ImagesVoitures $imagesVoiture): self
     {
-        if ($this->images_imagesVoitures->removeElement($imagesImagesVoiture)) {
+        if ($this->imagesVoitures->removeElement($imagesVoiture)) {
             // set the owning side to null (unless already changed)
-            if ($imagesImagesVoiture->getVoitures() === $this) {
-                $imagesImagesVoiture->setVoitures(null);
+            if ($imagesVoiture->getVoitures() === $this) {
+                $imagesVoiture->setVoitures(null);
             }
         }
 

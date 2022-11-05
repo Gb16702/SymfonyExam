@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController {
-    #[Route('/home', 'home', methods: ['GET'])]
+    #[Route('/', 'home', methods: ['GET'])]
     public function index(MarquesRepository $marque, PartialsRepository $partials, VoituresRepository $voitures, ImagesVoituresRepository $imagesVoitures): Response {
         return $this->render('home.html.twig', [
             // "marques" => $marque->findAll(),

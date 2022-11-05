@@ -28,7 +28,7 @@ class ImagesVoitures
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'images_imagesVoitures')]
+    #[ORM\ManyToOne(inversedBy: 'imagesVoitures')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Voitures $voitures = null;
 

@@ -32,8 +32,7 @@ class Marques
     #[ORM\Column(type: 'string')]
     private ?string $imageName = null;
 
-    #[ORM\Column(type: 'integer')]
-    private ?int $imageSize = null;
+
 
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $updatedAt = null;
@@ -80,15 +79,7 @@ class Marques
         return $this->imageName;
     }
 
-    public function setImageSize(?int $imageSize): void
-    {
-        $this->imageSize = $imageSize;
-    }
-
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
+  
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
