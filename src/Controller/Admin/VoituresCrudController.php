@@ -31,14 +31,13 @@ class VoituresCrudController extends AbstractCrudController
             // TextEditorField::new('description'),
             MoneyField::new('prix') -> setCurrency("EUR"),
             IntegerField::new('km'),
-            CollectionField::new('ImagesImagesVoitures')->
-            setEntryType(ImagesVoituresType::class)
-            ->setTemplatePath('admin/collection')
-            -> onlyOnForms(),
             AssociationField::new('marque')
             ->setFormTypeOptions((['by_reference' => true])),
 
-            //  CollectionField::new('ImagesVoitures') -> setTemplatePath('admin/collection')
+            CollectionField::new('ImagesImagesVoitures')->
+            setEntryType(ImagesVoituresType::class)
+            -> onlyOnForms(),
+
         ];
     }
 

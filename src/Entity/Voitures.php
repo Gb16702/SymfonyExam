@@ -102,11 +102,11 @@ class Voitures
         return $this->images_imagesVoitures;
     }
 
-     public function setImagesImagesVoitures(?ImagesVoitures $images_imagesVoitures): self
-     {
-         $this -> images_imagesVoitures = $images_imagesVoitures;
-         return $this;
-     }
+    //  public function setImagesImagesVoitures(?ImagesVoitures $images_imagesVoitures): self
+    //  {
+    //      $this -> images_imagesVoitures = $images_imagesVoitures;
+    //      return $this;
+    //  }
 
 
     public function addImagesImagesVoiture(ImagesVoitures $imagesImagesVoiture): self
