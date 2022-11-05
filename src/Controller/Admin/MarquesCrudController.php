@@ -19,10 +19,7 @@ class MarquesCrudController extends AbstractCrudController
         return [
             TextField::new('nom'),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyOnForms(),
-            ImageField::new('imageName')->setBasePath('/images/voitures')->onlyOnIndex(),
+            ImageField::new('imageName')->setBasePath('/images/logos')->onlyOnIndex(),
         ];
     }
-
-
-
 }

@@ -23,7 +23,7 @@ class Marques
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[Vich\UploadableField(mapping: 'voitures', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Vich\UploadableField(mapping: 'marques', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
     #[ORM\OneToMany(mappedBy: 'marques', targetEntity: Voitures::class, orphanRemoval: true)]

@@ -22,9 +22,9 @@
 		{% for voiture in voitures %}
 		{# {% for image in imagesVoitures %} #}
 
-			{# <pre>
-				{{ dump(voiture.images_imagesVoitures[0]) }}
-			</pre> #}
+			  <pre>
+				{{ dump() }}
+			</pre>
 		{% if loop.index is odd %}
 	<div class="containerHomeBody">
 			<div  class="containerHomeBodySlideA" style = 'background: white;'>
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 				<div class="containerHomeBodySlideARight" >
-					 {# <div class="containerHomeBodySlideARightBloc"  style="background-image: url({{ vich_uploader_asset(image, 'imageFile') }}); background-size: cover; background-position: left;"></div> #}
+					   <div class="containerHomeBodySlideARightBloc"  style="background-image: url({{ vich_uploader_asset(voiture.images_imagesVoitures, 'imageFile') }}); background-size: cover; background-position: left;"></div>
 				</div>
 			</div>
 		</div>

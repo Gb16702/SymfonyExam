@@ -13,7 +13,12 @@ class ImagesVoituresType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('ImageFile', VichFileType::class);
+        ->add('imageFile', VichFileType::class, array(
+            'required' => false,
+            // 'allow_delete' => true, // not mandatory, default is true
+            'download_link' => true, // not mandatory, default is true
+        ));
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
