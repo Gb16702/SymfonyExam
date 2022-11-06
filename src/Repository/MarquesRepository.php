@@ -21,6 +21,8 @@ class MarquesRepository extends ServiceEntityRepository
         parent::__construct($registry, Marques::class);
     }
 
+
+
     public function save(Marques $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

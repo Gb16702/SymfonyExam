@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Marques;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -20,6 +21,7 @@ class MarquesCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyOnForms(),
             ImageField::new('imageName')->setBasePath('/images/logos')->onlyOnIndex(),
+            SlugField:: new ('slug') ->setTargetFieldName('nom')
         ];
     }
 }

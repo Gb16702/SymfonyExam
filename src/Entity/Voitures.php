@@ -36,6 +36,18 @@ class Voitures
     #[ORM\JoinColumn(nullable: false)]
     private ?Marques $marque = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Titre = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $carburant = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->imagesVoitures = new ArrayCollection();
@@ -122,6 +134,52 @@ class Voitures
     {
         $this->marque = $marque;
 
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->Titre;
+    }
+
+    public function setTitre(string $Titre): self
+    {
+        $this->Titre = $Titre;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCarburant(): ?string
+    {
+        return $this->carburant;
+    }
+
+    public function setCarburant(string $carburant): self
+    {
+        $this->carburant = $carburant;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this -> slug;
+    }
+    public function setSlug(string $slug): self
+    {
+        $this -> slug = $slug;
         return $this;
     }
 }

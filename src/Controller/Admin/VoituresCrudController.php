@@ -8,12 +8,13 @@ use App\Form\ImagesVoituresType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField; 
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class VoituresCrudController extends AbstractCrudController
@@ -28,7 +29,9 @@ class VoituresCrudController extends AbstractCrudController
     {
         return [
             TextField::new('nom'),
-            // TextEditorField::new('description'),
+            TextField::new('titre'),
+            TextEditorField::new('description'),
+            TextField::new('carburant'),
             MoneyField::new('prix') -> setCurrency("EUR"),
             IntegerField::new('km'),
             AssociationField::new('marque')
@@ -37,7 +40,7 @@ class VoituresCrudController extends AbstractCrudController
             CollectionField::new('ImagesVoitures')->
             setEntryType(ImagesVoituresType::class)
             -> onlyOnForms(),
-
+            SlugField:: new ('slug') ->setTargetFieldName('nom'),
         ];
     }
 

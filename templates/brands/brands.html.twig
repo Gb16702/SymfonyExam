@@ -4,6 +4,9 @@
 
 
 {% block body %}
+{# <div class="count">
+    {{ pagination.getTotalItemCount }}
+</div> #}
 {% include "./partials/header.html.twig" %}
     <div class="brandsContainer" style = "background-color: rgb(21, 21, 21)">
     {% for marque in marqueCard %}
@@ -13,7 +16,7 @@
             </div>
             <div class="brandCardBottom">
                     <h2>{{ marque.nom | capitalize }}</h2>
-                    <a href="#">Visiter la marque</a>
+                    <a href="{{ path('app_showRoom', {slug: marque.slug}) }}">Visiter la marque</a>
             </div>
         </div>
         {% endfor %}
