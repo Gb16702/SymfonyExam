@@ -16,15 +16,9 @@ class BrandsController extends AbstractController
     #[Route('/marques', name: 'app_brands', methods: ['GET'])]
     public function index(MarquesRepository $marque, Request $request, PaginatorInterface $paginatorInterface): Response
     {
-        // $dql = "SELECT m :"
-
-        // $marque = $paginatorInterface->paginate(
-        //     $request->query->getInt('page', 1),
-        //     limit: 4
-        // );
-
-
-        return $this->render('brands/brands.html.twig', [ "marqueCard" => $marque->findAll() ]);
+        return $this->render('brands/brands.html.twig', [
+            "marqueCard" => $marque->paginate($request -> query -> getInt('page', 1))
+        ]);
     }
 
     #[Route('/marques/{slug}', name: 'app_showRoom')]

@@ -41,7 +41,7 @@ window.onload = function(){
         executed = false
     }
     const height = Math.max(document.body.getBoundingClientRect().height, html.getBoundingClientRect().height);
-    var calc = height - 450
+    var calc = height - 390
     // console.log(calc)
 
 

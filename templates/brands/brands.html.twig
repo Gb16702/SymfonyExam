@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}symApp - Marques {% endblock %}
 
 
 
@@ -8,6 +9,12 @@
     {{ pagination.getTotalItemCount }}
 </div> #}
 {% include "./partials/header.html.twig" %}
+<div class="brandsGreatestContainer" style = "background-color: rgb(21, 21, 21)">
+    <div class="countContainer">
+      <div class="count">
+          Total : {{ marqueCard.getTotalItemCount }} marques
+      </div>
+    </div>
     <div class="brandsContainer" style = "background-color: rgb(21, 21, 21)">
     {% for marque in marqueCard %}
         <div class="brandsCard">
@@ -18,9 +25,16 @@
                     <h2>{{ marque.nom | capitalize }}</h2>
                     <a href="{{ path('app_showRoom', {slug: marque.slug}) }}">Visiter la marque</a>
             </div>
+
+
         </div>
         {% endfor %}
     </div>
+        <div class="paginationContainer">
+                {{ knp_pagination_render(marqueCard) }}
+        </div>
+</div>
+
 {% include "./partials/footer.html.twig" %}
 
 <script>

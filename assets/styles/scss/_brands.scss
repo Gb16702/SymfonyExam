@@ -1,13 +1,60 @@
+.brandsGreatestContainer {
+    min-height: 110vh;
+    border-bottom: 1px solid white;
+
+}
 .brandsContainer {
     min-height: 100vh;
     width: 100%;
     display: grid;
-    padding: 40px 30px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    padding: 60px 70px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 20px;
+}
+.countContainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start ;
+    width: 100%;
+    height: 60px;
+}
+.count {
+    color: white;
+    font-size: 15px;
+    margin-left: 70px;
+}
+.paginationContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+.pagination {
+    width: 10%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 8px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+span.current {
+    color: #fff;
+    border-radius: 1px;
+    padding: 4px 8px;
 
-
+    background-color: rgb(151, 151, 151);
+}
+.page a  {
+    color:  rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 8px;
+}
+.previous, .first, .next, .last {
+    display: none;
 }
 .brandsCard {
     background-color: black;
