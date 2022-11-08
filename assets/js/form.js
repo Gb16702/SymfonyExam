@@ -78,24 +78,24 @@ console.log('ok');
             })
 
 
-            import MagnetMouse from 'magnet-mouse';
+//             import MagnetMouse from 'magnet-mouse';
 
 
-const magnetMouse = require('magnet-mouse');
+// const magnetMouse = require('magnet-mouse');
 
-let mm = new MagnetMouse({
-    magnet: {
-        element: '.submit', /* Element to magnet */
-        enabled: true, /* Enables the magnet effect */
-        distance: 0, /* Distance (in px) when the magnet effect around element activates */
-        position: 'center' /* Position of mouse relative to the element when magnet effect is active */
-      },
-      follow: {
-        element: '.follow-mouse', /* Element that follows the mouse */
-      },
-      throttle: 10, /* Time (in ms) between each eventListener calls */
-      inCallback: null, /* Callback when mouse enters in the magnet effect */
-      outCallback: null /* Callback when mouse leaves in the magnet effect */
-    });
-  console.log(mm);
-  mm.init();
+// let mm = new MagnetMouse({
+//     magnet: {
+//         element: '.submit', /* Element to magnet */
+//         enabled: true, /* Enables the magnet effect */
+//         distance: 0, /* Distance (in px) when the magnet effect around element activates */
+//         position: 'center' /* Position of mouse relative to the element when magnet effect is active */
+//       },
+//       follow: {
+//         element: '.follow-mouse', /* Element that follows the mouse */
+//       },
+//       throttle: 10, /* Time (in ms) between each eventListener calls */
+//       inCallback: null, /* Callback when mouse enters in the magnet effect */
+//       outCallback: null /* Callback when mouse leaves in the magnet effect */
+//     });
+//   console.log(mm);
+//   mm.init();

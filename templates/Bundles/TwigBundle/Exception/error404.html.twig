@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+
+{% block titile %}Cette page n'existe pas {% endblock %}
+
+{% block body %}
+    <div class="containerError404">
+        <h4>Oups ! La page que vous recherchez n'existe pas ou plus !</h4>
+        <p>On a sûrement du mal vous renseigner ! Aucoun soucis, vous pouvez retourner à l'accueil</p>
+        <a href="{{path('home')}}">Retourner à l'accueil</a>
+    </div>
+    
+{{ encore_entry_link_tags('error') }}
+
+{% endblock %}

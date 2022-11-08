@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+
 /**
  * @extends ServiceEntityRepository<Marques>
  *
@@ -50,15 +51,19 @@ class MarquesRepository extends ServiceEntityRepository
      * @return PaginationInterface
      */
     public function paginate(int $page): PaginationInterface
+
      {
-        $marque = $this ->createQueryBuilder('m')
+        $marque = $this -> createQueryBuilder("m")
         ->orderBy('m.nom', 'ASC')
         ->getQuery()
         ->getResult();
 
-        $marque = $this -> paginator->paginate($marque, $page, limit: 6);
-         return $marque;
+        $marque = $this -> paginator -> paginate($marque, $page, limit: 6);
+        return $marque;
      }
+
+
+
 
 //    /**
 //     * @return Marques[] Returns an array of Marques objects

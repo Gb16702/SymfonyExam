@@ -39,7 +39,7 @@ class Voitures
     #[ORM\Column(length: 255)]
     private ?string $Titre = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
@@ -57,6 +57,7 @@ class Voitures
     {
         return $this->id;
     }
+
 
     public function getNom(): ?string
     {

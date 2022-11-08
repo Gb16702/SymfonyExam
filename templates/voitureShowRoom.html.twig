@@ -1,7 +1,33 @@
 {% extends "base.html.twig" %}
+{% block title %}
+{# {% for marque in marques %} #}
+    {# {{marque.slug}} #}
 
+{# {% endfor %} #}
+{# SymApp - {{marques}} #}
+{% endblock %}
 {% block body %}
+
 {% include "./partials/header.html.twig" %}
+
+
+{{marque.nom}}
+
+<pre>
+    {{ dump(marque.voitures) }}
+</pre>
+
+
+
+
+
+{# {% for marque in marques %}
+
+<script>
+    console.log("ok")
+</script>
+
+{% endfor %} #}
 
 
 

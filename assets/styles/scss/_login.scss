@@ -5,14 +5,12 @@ form {
     background-color: #3f4041;
 }
 .back {
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(252, 252, 252);
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding: 5px 20px 0 0;
     font-size: 13px;
-}
-.back a {
     text-decoration: none;
     color: #c20f3f
 }
@@ -22,7 +20,7 @@ form {
     height: 80px;
     text-align: center;
     padding-top: 30px;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(252, 252, 252);
 }
 .edge:first-child{
     height: 200px;
@@ -60,7 +58,7 @@ form {
     width: 130px;
 }
 .blocConnexion {
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(252, 252, 252);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -99,6 +97,7 @@ justify-content: center;
     background-color: #ffffff;
     overflow: hidden;
     border-radius: 5px;
+    box-shadow: 0 4px 10px -1px #ccc;
 }
 .form-group {
     position: relative;

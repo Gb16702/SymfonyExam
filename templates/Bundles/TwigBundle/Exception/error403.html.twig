@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block titile %}Cette page n'existe pas {% endblock %}
+
+{% block body %}
+    <div class="containerError404">
+        <h4>Pas si vite ! Cette page vous est interdite</h4>
+        <p>Cette page est réservée aux administrateurs, vous pouvez revenir à l'accueil</p>
+        <a href="{{path('home')}}">Retourner à l'accueil</a>
+    </div>
+
+{{ encore_entry_link_tags('error') }}
+
+{% endblock %}

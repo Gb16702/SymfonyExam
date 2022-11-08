@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Marques;
 use App\Repository\MarquesRepository;
 use App\Repository\VoituresRepository;
 use App\Repository\ImagesVoituresRepository;
@@ -17,17 +18,20 @@ class BrandsController extends AbstractController
     public function index(MarquesRepository $marque, Request $request, PaginatorInterface $paginatorInterface): Response
     {
         return $this->render('brands/brands.html.twig', [
-            "marqueCard" => $marque->paginate($request -> query -> getInt('page', 1))
+            'marqueCard' => $marque->paginate($request->query->getInt("page", 1))
         ]);
     }
 
     #[Route('/marques/{slug}', name: 'app_showRoom')]
 
-    public function voituresShowRoom( MarquesRepository $marque): Response
+    public function voituresShowRoom(Marques $marques): Response
      {
-
+        foreach ($marques->getVoitures() as $key => $value) {
+            # code...
+            dd($value);
+        };
         return $this -> render ('voitureShowRoom.html.twig', [
-            "marqueCard" => $marque->findAll(),
+            "marque" => $marques
         ]);
      }
 }

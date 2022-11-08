@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block titile %}Cette page n'existe pas {% endblock %}
+
+{% block body %}
+    <div class="containerError404">
+        <h4>Internal error 500</h4>
+        <a href="{{path('home')}}">Retourner à l'accueil</a>
+    </div>
+
+{{ encore_entry_link_tags('error') }}
+
+{% endblock %}

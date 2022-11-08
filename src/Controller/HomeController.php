@@ -16,7 +16,10 @@ class HomeController extends AbstractController {
         return $this->render('home.html.twig', [
             // "marques" => $marque->findAll(),
             // "marqueBg" =>$marque->find(6),
-            "voitures" => $voitures ->findBy([], $orderBy = null, $limit = 4),
+            "voitures" => $voitures ->findBy([], $orderBy = [
+                "id" => "DESC"
+            ],
+             $limit = 4),
             "imagesVoitures" => $imagesVoitures->findBy([], $orderBy = null, $limit = 4),
              "header" => $partials->findOneBy([
                  "section" => "header"
