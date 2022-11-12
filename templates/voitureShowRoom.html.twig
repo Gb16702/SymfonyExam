@@ -1,21 +1,42 @@
 {% extends "base.html.twig" %}
 {% block title %}
-{# {% for marque in marques %} #}
-    {# {{marque.slug}} #}
-
-{# {% endfor %} #}
-{# SymApp - {{marques}} #}
 {% endblock %}
 {% block body %}
 
 {% include "./partials/header.html.twig" %}
 
+<div class="containerShowVoitures">
 
-{{marque.nom}}
+<div class="containerShowVoituresBloc">
+{% if marques.voitures | length > 0 %}
+ Résultat : {{marques.voitures  | length}} {{marques.nom}}
+{% else %}
+    Pas de voitures
+{% endif %}
+{% for voiture in marques.voitures %}
+<div class="containerShowVoituresCard">
+    <div class="containerShowVoituresImage">
 
-<pre>
-    {{ dump(marque.voitures) }}
-</pre>
+         <div class="containerShowVoituresImagePlace" style = 'background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], "imageFile") }}); background-size:cover; background-position: center ;' ></div>
+    </div>
+    <div class="containerShowVoituresInfo">
+    <div class="containerNom">
+       Nom : {{voiture.nom}}
+    </div>
+    <div class="containerKm">
+        Kilométrage : {{voiture.km}} km
+    </div>
+    <div class="containerPrix">
+        Prix : {{voiture.prix}} &euro;
+    </div>
+    <a class = "showVoituresLink" href="{{ path('app_cars', {slug: voiture.slug}) }}">Voir la voiture</a>
+    </div>
+</div>
+{% endfor %}
+
+</div>
+
+</div>
 
 
 
@@ -32,4 +53,65 @@
 
 
 {% include "./partials/footer.html.twig" %}
+<script>
+
+
+function getCurrentURL () {
+    return window.location.href
+  }
+
+  const url = getCurrentURL()
+  const footer = document.querySelector(".containerFooter")
+  const el = document.querySelector(".brandsContainer")
+  const hBloc = document.querySelectorAll(".hBloc")
+  const h4Bloc = document.querySelectorAll(".h4Bloc")
+  const bloc2= document.getElementById("blocP")
+  const nav = document.querySelector(".containerNav")
+  console.log(nav)
+  nav.style.position = "relative"
+  nav.style.backgroundColor = "rgb(21,21,21)"
+
+
+
+  let white = "rgb(231, 231, 231)"
+
+
+  const value = window.getComputedStyle(el)
+
+  const background = value.getPropertyValue("background-color")
+ // console.log(background)
+
+  console.log(url);
+  if(window.location.href.indexOf("marques") > -1) {
+    footer.style.backgroundColor = background
+    footer.style.borderTop = "3px solid white"
+
+    var bloc2Before = window.getComputedStyle(bloc2, "::before")
+    console.log(bloc2Before.backgroundColor)
+    bloc2.style.setProperty('--before', white)
+    bloc2.style.setProperty('--after', white)
+
+
+
+    for (const liste of footer.children) {
+       // console.log(liste.tagName)
+      liste.style.color = white
+
+      hBloc.forEach(enfant => {
+        // console.log(enfant)
+        for(const hBlocEnfant of enfant.children) {
+          //console.log (rowListe)
+          hBlocEnfant.style.color = white
+        }
+      })
+       h4Bloc.forEach(h4BlocEnfant => {
+        for (const h4BlocListe of h4BlocEnfant.children) {
+          h4BlocListe.style.color = white
+        }
+      })
+
+    }
+  }
+
+</script>
 {% endblock %}

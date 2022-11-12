@@ -5,9 +5,7 @@
 
 
 {% block body %}
-{# <div class="count">
-    {{ pagination.getTotalItemCount }}
-</div> #}
+
 {% include "./partials/header.html.twig" %}
 <div class="brandsGreatestContainer" style = "background-color: rgb(21, 21, 21)">
     <div class="countContainer">
@@ -19,7 +17,7 @@
     {% for marque in marqueCard %}
         <div class="brandsCard">
             <div class="brandsCardTop">
-            <div class="brandsCardImage" style = "background-image: url({{ vich_uploader_asset(marque, 'imageFile') }}); background-size: cover; background-position: center;"></div>
+             <div class="brandsCardImage" style = "background-image: url({{ vich_uploader_asset(marque, 'imageFile') }}); background-size: cover; background-position: center;"></div>
             </div>
             <div class="brandCardBottom">
                     <h2>{{ marque.nom | capitalize }}</h2>

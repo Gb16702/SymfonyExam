@@ -2,10 +2,10 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Marques;
+use App\Entity\Marque;
+use App\Entity\Partials;
 use App\Entity\Voitures;
 use App\Entity\ImagesVoitures;
-use App\Entity\Partials;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -36,7 +36,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Add cars', "fa-solid fa-car", Voitures::class);
-        yield MenuItem::linkToCrud('Add brands', "fa-solid fa-layer-group", Marques::class);
+        yield MenuItem::linkToCrud('Add brands', "fa-solid fa-layer-group", Marque::class);
         yield MenuItem::linkToCrud('Add partials', "fa-solid fa-file-export", Partials::class);
         yield MenuItem::linktoRoute('Back to the website', 'fa-solid fa-rotate-left', 'home',);
     }

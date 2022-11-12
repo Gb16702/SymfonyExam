@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Marques;
+use App\Entity\Marque;
 use App\Repository\MarquesRepository;
 use App\Repository\VoituresRepository;
-use App\Repository\ImagesVoituresRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use App\Repository\ImagesVoituresRepository;
+use App\Entity\Voitures;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,14 +25,22 @@ class BrandsController extends AbstractController
 
     #[Route('/marques/{slug}', name: 'app_showRoom')]
 
-    public function voituresShowRoom(Marques $marques): Response
+    public function voituresShowRoom(Marque $marques): Response
      {
-        foreach ($marques->getVoitures() as $key => $value) {
-            # code...
-            dd($value);
-        };
         return $this -> render ('voitureShowRoom.html.twig', [
-            "marque" => $marques
+            "marques" => $marques
         ]);
      }
+     #[Route('/cars/{slug}', name: 'app_cars', methods: ['GET'])]
+
+     public function carsDetails(Voitures $voiture): Response
+     {
+        return $this -> render('voitureInfo.html.twig', [
+            "voiture" => $voiture
+        ]);
+     }
+
 }
+
+
+

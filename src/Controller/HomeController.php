@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Repository\ImagesVoituresRepository;
 use App\Repository\MarquesRepository;
 use App\Repository\PartialsRepository;
 use App\Repository\VoituresRepository;
+use App\Repository\ImagesVoituresRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

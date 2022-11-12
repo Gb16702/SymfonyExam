@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\ImagesVoitures;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\VoituresRepository;
@@ -34,7 +35,7 @@ class Voitures
 
     #[ORM\ManyToOne(inversedBy: 'voitures')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Marques $marque = null;
+    private ?Marque $marque = null;
 
     #[ORM\Column(length: 255)]
     private ?string $Titre = null;
@@ -126,12 +127,12 @@ class Voitures
         return $this;
     }
 
-    public function getMarque(): ?Marques
+    public function getMarque(): ?Marque
     {
         return $this->marque;
     }
 
-    public function setMarque(?Marques $marque): self
+    public function setMarque(?Marque $marque): self
     {
         $this->marque = $marque;
 

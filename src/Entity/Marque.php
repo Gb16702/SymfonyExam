@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 #[ORM\Entity(repositoryClass: MarquesRepository::class)]
 #[Vich\Uploadable]
 
-class Marques
+class Marque
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,10 +23,10 @@ class Marques
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[Vich\UploadableField(mapping: 'marques', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField(mapping: 'marque', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
-    #[ORM\OneToMany(mappedBy: 'marques', targetEntity: Voitures::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'marque', targetEntity: Voitures::class, orphanRemoval: true)]
     private Collection $voitures;
 
     #[ORM\Column(type: 'string')]

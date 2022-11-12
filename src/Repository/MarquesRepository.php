@@ -2,11 +2,11 @@
 
 namespace App\Repository;
 
-use App\Entity\Marques;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Marque;
 use Doctrine\Persistence\ManagerRegistry;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 
 /**
@@ -21,12 +21,12 @@ class MarquesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry, private PaginatorInterface $paginator)
     {
-        parent::__construct($registry, Marques::class);
+        parent::__construct($registry, Marque::class);
     }
 
 
 
-    public function save(Marques $entity, bool $flush = false): void
+    public function save(Marque $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -35,7 +35,7 @@ class MarquesRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Marques $entity, bool $flush = false): void
+    public function remove(Marque $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -58,7 +58,7 @@ class MarquesRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
 
-        $marque = $this -> paginator -> paginate($marque, $page, limit: 6);
+        $marque = $this -> paginator -> paginate($marque, $page, limit: 9);
         return $marque;
      }
 
