@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\MarquesRepository;
 use App\Repository\PartialsRepository;
 use App\Repository\VoituresRepository;
@@ -29,6 +30,7 @@ class HomeController extends AbstractController {
             ]),
         ]);
     }
+
     // public function footer(MarquesRepository $footer): Response {
     //     return $this->render('home.html.twig', [
     //         "footer" => $footer->find(1),

@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['username'], message: 'Un autre utilisateur possède déjà ce nom, merci de le modifier')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -17,10 +20,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     #[ORM\Column(type: "string", length: 180, unique: true)]
-    #[Assert\NotBlank(message: "Le champs de nom d'utilisateur est requis")]
-    #[Assert\Length(min: 3, max: 20, minMessage: "Votre nom d'utilisateur doit faire au moins 3 caractères", maxMessage: "Votre nom d'utilisateur ne peut pas faire plus de 20 caractères")]
+    // #[Assert\NotBlank(message: "Le champs de nom d'utilisateur est requis")]
+    // #[Assert\Length(min: 3, max: 20, minMessage: "Votre nom d'utilisateur doit faire au moins 3 caractères", maxMessage: "Votre nom d'utilisateur ne peut pas faire plus de 20 caractères")]
     private ?string $username = null;
 
     #[ORM\Column(type: "json")]
@@ -30,9 +35,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column(type:"string")]
-    #[Assert\Length(min: 3, max: 20, minMessage: "Votre mot de passe doit faire au moins 3 caractères", maxMessage: "Votre mot de passe ne peut pas faire plus de 20 caractères")]
-    #[Assert\NotNull(message: "Le champs de mot de passe ne peut pas être vide")]
+    // #[Assert\Length(min: 3, max: 20, minMessage: "Votre mot de passe doit faire au moins 3 caractères", maxMessage: "Votre mot de passe ne peut pas faire plus de 20 caractères")]
+    // #[Assert\NotNull(message: "Le champs de mot de passe ne peut pas être vide")]
     private ?string $password = null;
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function initializeSlug():void
+    {
+        if(empty($this->slug))
+        {
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->username.' '.uniqid());
+        }
+    }
 
     public function getId(): ?int
     {
@@ -102,5 +118,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+        return $this;
     }
 }

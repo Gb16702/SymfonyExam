@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+Bonjour, {{user.username}}
+
+<a href="{{path('app_voitures_new')}}">Ajouter une voiture</a>
+
+<p>Les voitures que vous avez ajoutées :</p>
+<pre>
+    {{ dump() }}
+</pre>
+{% endblock %}

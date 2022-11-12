@@ -27,7 +27,7 @@ class BrandsController extends AbstractController
 
     public function voituresShowRoom(Marque $marques): Response
      {
-        return $this -> render ('voitureShowRoom.html.twig', [
+        return $this -> render('voitureShowRoom.html.twig', [
             "marques" => $marques
         ]);
      }

@@ -6,6 +6,7 @@ use App\Entity\Voitures;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class VoituresType extends AbstractType
 {
@@ -20,6 +21,11 @@ class VoituresType extends AbstractType
             ->add('carburant')
             ->add('slug')
             ->add('marque')
+            ->add('images', FileType::class, [
+                "multiple" => true,
+                "required" => false,
+                "mapped" => false,
+            ])
         ;
     }
 

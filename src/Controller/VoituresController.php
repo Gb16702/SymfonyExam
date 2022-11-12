@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Voitures;
 use App\Form\VoituresType;
+use App\Entity\ImagesVoitures;
 use App\Repository\VoituresRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 // #[Route('/voitures')]
 class VoituresController extends AbstractController
@@ -36,9 +37,23 @@ class VoituresController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $images = $form->get('images')->getData();
+            foreach($images as $image){
+                $file = md5(uniqid()) . '.' .$image->guessExtension();
+                $image->move(
+                    $this->getParameter('imagePath'),
+                    $file
+                );
+
+                $img = new ImagesVoitures();
+                $img->setImageName($file);
+                $voiture->addImagesVoiture($img);
+            }
+
             $voituresRepository->save($voiture, true);
 
-            return $this->redirectToRoute('app_voitures_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('voitures/new.html.twig', [

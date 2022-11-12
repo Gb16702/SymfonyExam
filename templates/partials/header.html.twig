@@ -17,12 +17,21 @@
 					<a class="link" href="#">Contact</a>
 				</li>
 				<li>
+				{% if app.user == true %}
+					<a class="link" href="{{ path('app_logout') }}">Déconnexion</a>
+				{% else %}
 					<a class="link" href="{{ path('app_login')}}">Connexion</a>
+				{% endif %}
 				</li>
 			</ul>
 		</div>
 		<div class="blocFas">
-			<i class="fa-solid fa-magnifying-glass"></i>
+		 {% if app.user %}
+			<a href="{{ path('app_user', {slug: app.user.slug}) }}"><i class="fa-solid fa-user"></i></a>
+			{% else %}
+			<a href="{{ path('app_login')}}"><i class="fa-solid fa-user"></i></a>
+		{% endif %}
+
 		</div>
 	</nav>
 	<div id="burger">
