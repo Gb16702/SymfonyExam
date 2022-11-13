@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -38,6 +40,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     // #[Assert\Length(min: 3, max: 20, minMessage: "Votre mot de passe doit faire au moins 3 caractères", maxMessage: "Votre mot de passe ne peut pas faire plus de 20 caractères")]
     // #[Assert\NotNull(message: "Le champs de mot de passe ne peut pas être vide")]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Voitures::class, orphanRemoval: true)]
+    private Collection $userVoiture;
+
+    public function __construct()
+    {
+        $this->userVoiture = new ArrayCollection();
+    }
 
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
@@ -127,6 +137,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Voitures>
+     */
+    public function getUserVoiture(): Collection
+    {
+        return $this->userVoiture;
+    }
+
+    public function addUserVoiture(Voitures $userVoiture): self
+    {
+        if (!$this->userVoiture->contains($userVoiture)) {
+            $this->userVoiture->add($userVoiture);
+            $userVoiture->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserVoiture(Voitures $userVoiture): self
+    {
+        if ($this->userVoiture->removeElement($userVoiture)) {
+            // set the owning side to null (unless already changed)
+            if ($userVoiture->getUser() === $this) {
+                $userVoiture->setUser(null);
+            }
+        }
+
         return $this;
     }
 }

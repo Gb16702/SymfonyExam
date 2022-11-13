@@ -1,0 +1,22 @@
+body {
+    background-color: red;
+}
+
+.userProfileBloc {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: green;
+    min-height: 40vh;
+    flex-direction: column;
+}
+
+.welcomeMessage {
+    color: grey;
+}
+
+.addCar {
+padding: 20px;
+background-color: violet;
+text-decoration: none;
+}

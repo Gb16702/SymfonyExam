@@ -50,10 +50,11 @@ class VoituresController extends AbstractController
                 $img->setImageName($file);
                 $voiture->addImagesVoiture($img);
             }
-
+            $voiture->setUser($this->getUser());
             $voituresRepository->save($voiture, true);
 
-            return $this->redirectToRoute('app_user', [], Response::HTTP_SEE_OTHER);
+
+            return $this->redirectToRoute('app_brands/{}', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('voitures/new.html.twig', [

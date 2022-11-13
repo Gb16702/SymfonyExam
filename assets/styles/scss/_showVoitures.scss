@@ -1,7 +1,8 @@
 .containerShowVoitures {
     background-color: rgb(255, 255, 255);
-    height: 100vh;
     display: flex;
+    min-height: 100vh;
+    max-height: auto;
     align-items: center;
     justify-content: center;
     flex-direction: column;

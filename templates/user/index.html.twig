@@ -4,12 +4,27 @@
 
 {% block body %}
 
-Bonjour, {{user.username}}
+<div class="userProfileBloc">
+<h2 class = "welcomeMessage">
+    Bonjour, {{user.username}}
+</h2>
 
-<a href="{{path('app_voitures_new')}}">Ajouter une voiture</a>
+<a class = "addCar" href="{{path('app_voitures_new')}}">Ajouter une voiture</a>
+</div>
 
+<div class="userProfileBloc2">
 <p>Les voitures que vous avez ajoutées :</p>
-<pre>
-    {{ dump() }}
-</pre>
+    {% for voiture in user.userVoiture %}
+    <div class="cardUser">
+        <div class="cardUserTop" style = "background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], 'imageFile') }})"></div>
+        <div class="cardUserBottom">
+             {{voiture.nom}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    {{ encore_entry_link_tags('user') }}
+
+
+
 {% endblock %}
