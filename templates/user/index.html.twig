@@ -4,24 +4,54 @@
 
 {% block body %}
 
+<a class = "backToWebsite" href="{{path('home')}}">Revenir à la page principale</a>
 <div class="userProfileBloc">
 <h2 class = "welcomeMessage">
     Bonjour, {{user.username}}
 </h2>
+    <pre>
+        {{ dump() }}
+    </pre>
+    {% if user.picture is null %}
+         <div class="userProfilePicture" style = "background-image: url('https://picsum.photos/300/300'); background-size:cover; background-repeat: no-repeat"></div>
+    {% else %}
+    <pre>
+        {{ dump(user.picture) }}
+    </pre>
+          {# <div class="userProfilePicture" style = "background-image: url({{ vich_uploader_asset(user.picture, 'imageFile') }})"></div> #}
+    {% endif %}
 
-<a class = "addCar" href="{{path('app_voitures_new')}}">Ajouter une voiture</a>
+<div class="form-group-user">
+<a class = "addCar" href="{{path('app_voitures_new', {slug: user.slug})}}">Ajouter une voiture</a>
+<a class = "changePic" href="{{path('user_imgEdit', {slug: user.slug})}}">Changer d'image</a>
+    {# {{form_start(myForm)}}
+         {{form_widget(myForm)}}
+            <button type="submit" class="btn btn-warning">Confirmez la modification de l'avatar</button>
+    {{form_end(myForm)}} #}
+</div>
 </div>
 
 <div class="userProfileBloc2">
-<p>Les voitures que vous avez ajoutées :</p>
+<p class = "text-center">Les voitures que vous avez ajoutées :</p>
+<div class="grid">
     {% for voiture in user.userVoiture %}
     <div class="cardUser">
-        <div class="cardUserTop" style = "background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], 'imageFile') }})"></div>
+        <div class="cardUserTop" style = "background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], 'imageFile') }})">
+
+        </div>
         <div class="cardUserBottom">
+        <div class="cardUserBottomInfoCar">
              {{voiture.nom}}
+        </div>
+        <div class="cardUserBottomAction">
+            <a href="{{path('app_voitures_edit', {id: voiture.id })}}">Modifier la voiture</a>
+            <a href="{{path('app_voitures_delete', {id: voiture.id})}}">Supprimer la voiture</a>
+        </div>
+
         </div>
     </div>
     {% endfor %}
+</div>
 </div>
     {{ encore_entry_link_tags('user') }}
 

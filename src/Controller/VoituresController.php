@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Voitures;
+use App\Entity\User;
 use App\Form\VoituresType;
 use App\Entity\ImagesVoitures;
+use App\Repository\UserRepository;
 use App\Repository\VoituresRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,8 +31,8 @@ class VoituresController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_voitures_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, VoituresRepository $voituresRepository): Response
+    #[Route('/new/{slug}', name: 'app_voitures_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user): Response
     {
         $voiture = new Voitures();
         $form = $this->createForm(VoituresType::class, $voiture);
@@ -54,12 +56,13 @@ class VoituresController extends AbstractController
             $voituresRepository->save($voiture, true);
 
 
-            return $this->redirectToRoute('app_brands/{}', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_brands', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('voitures/new.html.twig', [
             'voiture' => $voiture,
             'form' => $form,
+            'user' => $user
         ]);
     }
 
@@ -71,7 +74,7 @@ class VoituresController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_voitures_edit', methods: ['GET', 'POST'])]
+    #[Route('/myProfile/{id}/edit', name: 'app_voitures_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Voitures $voiture, VoituresRepository $voituresRepository): Response
     {
         $form = $this->createForm(VoituresType::class, $voiture);
@@ -80,7 +83,7 @@ class VoituresController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $voituresRepository->save($voiture, true);
 
-            return $this->redirectToRoute('app_voitures_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_brands', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('voitures/edit.html.twig', [
@@ -96,6 +99,6 @@ class VoituresController extends AbstractController
             $voituresRepository->remove($voiture, true);
         }
 
-        return $this->redirectToRoute('app_voitures_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
 }

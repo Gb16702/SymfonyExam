@@ -9,6 +9,7 @@ body {
     background-color: green;
     min-height: 40vh;
     flex-direction: column;
+    padding: 10px;
 }
 
 .welcomeMessage {
@@ -16,7 +17,110 @@ body {
 }
 
 .addCar {
-padding: 20px;
+padding: 15px;
 background-color: violet;
 text-decoration: none;
+width: 42%;
+font-size: 15px;
+text-align: center;
+margin: 10px;
+}
+.changePic {
+    padding: 15px;
+    background-color: dodgerblue;
+    text-decoration: none;
+    width: 42%;
+    font-size: 15px;
+    text-align: center;
+    margin: 10px;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 22px;
+    margin-bottom: 35px;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr 1fr;
+    height: 100vh;
+    min-width: 100%;
+    gap: 10px;
+    padding: 0 20px;
+}
+.cardUser {
+    background-color: grey;
+    height: 250px;
+    position: relative;
+}
+.cardUserTop {
+    min-height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    filter: brightness(.3) blur(1px);
+}
+
+.cardUserBottom {
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+.cardUserBottomInfoCar {
+    height: 35%;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cardUserBottomAction {
+    height: calc(100% - 35%);
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    padding: 10px 0;
+    flex-direction: column;
+}
+.cardUserBottomAction  a {
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid red;
+
+    color: red;
+}
+
+.userProfilePicture {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+form{
+    background-color: red;
+    height: 20px;
+}
+
+.form-group-user {
+    background-color: aqua;
+    height: 100px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+#user {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
 }
