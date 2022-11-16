@@ -18,5 +18,15 @@ class AppFixtures extends Fixture
             ->setPassword('$2y$13$1eC2cai5oZiz1a.OBPMy2u.hZ1M8M1lWjZoNmnsRiRcD1GnOL1tvC');
         $manager->persist($user);
         $manager->flush();
+
+        // for ($i=0; $i < 20 ; $i++) {
+        //     $user = new User();
+        //     $user -> setUsername('Geoffrey'.$i)
+        //     ->setRoles(['ROLE_USER'])
+        //     ->setPassword('Ok');
+
+        //     $manager -> persist($user);
+        //     $manager -> flush();
+        // }
     }
 }

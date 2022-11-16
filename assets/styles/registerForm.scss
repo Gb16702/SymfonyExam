@@ -11,6 +11,35 @@ form {
     min-height: 100vh;
     background-color: #3f4041;
 }
+li, #text {
+    color: rgb(189, 14, 14);
+    font-size: 10px;
+    left: -40px;
+    white-space: nowrap;
+    position: absolute;
+    bottom: -18px;
+}
+.form-groupRegister div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 190px;
+    position: relative;
+}
+::marker {
+    color:transparent;
+    background-color: red;
+    display: none;
+    opacity: 0;
+}
+// ul {
+//     position: relative;
+//     height: 100px;
+//     width: 400px;
+//     background-color: red;
+// }
+
 .backRegister {
     background-color: rgb(233, 233, 233);
     display: flex;
@@ -107,11 +136,10 @@ justify-content: center;
     overflow: hidden;
     border-radius: 5px;
     box-shadow: 0 4px 10px -1px #ccc;
-
 }
 .form-groupRegister {
     position: relative;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .form-groupRegister input {
     height: 40px;

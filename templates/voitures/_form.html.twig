@@ -1,4 +1,26 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+ <div class="row">
+        <div class="col-4">
+            {{ form_row(form.nom) }}
+            {{ form_row(form.Titre) }}
+            {{ form_row(form.carburant) }}
+
+        </div>
+
+
+        <div class="col-4">
+        {{ form_row(form.slug) }}
+        {{form_row(form.prix)}}
+        {{form_row(form.km)}}
+        </div>
+
+ </div>
+        {{ form_row(form.images) }}
+        <div class="col-4" id = "col-4">
+            {{ form_row(form.marque) }}
+            {{ form_row(form.description) }}
+        </div>
+    </div>
+
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

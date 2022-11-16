@@ -1,0 +1,49 @@
+@import "~bootstrap/scss/bootstrap";
+
+ body {
+//     background-color: #363538;
+     min-height: 100vh;
+ }
+
+ .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+ }
+ form {
+    padding: 0 20%;
+ }
+ .col-4 {
+    width: 50%;
+ }
+form div {
+    width: 95%;
+}
+
+#col-4 {
+    width: 95%;
+}
+#voitures_images {
+margin-top: 20px;
+margin-bottom: 10px;
+width: 95%;
+}
+.btn {
+    background-color: greenyellow;
+    margin-top: 15px;
+}
+h1 {
+    text-align: center;
+    font-size: 29px;
+    margin: 40px 0;
+}
+a {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}

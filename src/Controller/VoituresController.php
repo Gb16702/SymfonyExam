@@ -55,6 +55,10 @@ class VoituresController extends AbstractController
             $voiture->setUser($this->getUser());
             $voituresRepository->save($voiture, true);
 
+            $this->addFlash(
+                'success',
+                "La voiture <strong>{$voiture -> getNom()}</strong> a bien été ajoutée"
+            );
 
             return $this->redirectToRoute('app_brands', [], Response::HTTP_SEE_OTHER);
         }

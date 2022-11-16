@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Voitures;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Proxies\__CG__\App\Entity\Marques;
 
 /**
  * @extends ServiceEntityRepository<Voitures>
@@ -16,7 +19,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
  */
 class VoituresRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private PaginatorInterface $paginator)
     {
         parent::__construct($registry, Voitures::class);
     }
@@ -38,4 +41,18 @@ class VoituresRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+
+    // public function paginateCar(int $page, ?Marques $marques = null): PaginationInterface
+
+    // {
+    //    $voiture = $this -> createQueryBuilder("v")
+    //    ->orderBy('v.nom', 'ASC')
+    //    ->getQuery()
+    //    ->getResult();
+
+    //    $voiture = $this -> paginator -> paginate($voiture, $page, limit: 10);
+    //    return $voiture;
+    // }
 }
+

@@ -22,16 +22,28 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     "class" => "label"
                 ],
+                "label" => "Nom d'utilisateur",
+                'constraints' => [
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => "Votre nom d'utilisateur doit contenir plus de 5 caractères",
+                        'max' => 20,
+                        'maxMessage' => "Votre nom d'utilisateur ne peut pas être plus long que 20 caractères"
+                    ]),
+                    new NotBlank([
+                        'message' => "Le nom d'utilisateur ne peut pas être vide"
+                    ])
+                ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 "attr" => [
                     "onclick" => "clicked()",
                 ],
                 'mapped' => false,
-                "label" => "Agree Terms",
+                "label" => "Accepter les conditions",
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter nos conditions',
                     ]),
                 ],
             ])
@@ -43,16 +55,17 @@ class RegistrationFormType extends AbstractType
                     'autocomplete' => 'new-password',
                     "class" => "label",
                 ],
-                "label" => "Password",
+                "label" => "Mot de passe",
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez entrer un mot de passe',
                     ]),
                     new Length([
-                        'min' => 3,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'min' => 5,
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 20,
+                        'maxMessage' => 'Votre mot de passe ne peut pas contenir plus de {{ limit }} caractères'
                     ]),
                 ],
             ])

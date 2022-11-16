@@ -153,7 +153,7 @@ justify-content: center;
     color: #ccc;
 }
 
-#submit {
+.submit {
     height: 40px;
     width: 100px;
     background-color: transparent;
@@ -164,12 +164,9 @@ justify-content: center;
     background-position: 100%;
     background-size: 400%;
     transition: background 300ms ease-in-out;
-
 }
-.submit {
-    transition: transform .3s ease;
-  }
-#submit:hover {
+
+.submit:hover {
     background-position: 0;
     border: none;
     color: white;

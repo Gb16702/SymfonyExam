@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
+        "bootstrap": "^5.2.2",
         "magnet-mouse": "github:fluffy-factory/magnet-mouse",
         "rellax": "^1.12.1",
         "sal.js": "^0.8.5",

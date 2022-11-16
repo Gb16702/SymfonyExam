@@ -12,7 +12,6 @@
 
 
 
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
@@ -37,4 +36,24 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
     }
     ::-webkit-scrollbar-thumb:hover {
         background: #c20f3f;
+    }
+
+    .alert-success {
+        background-color: #42b883;
+        position: absolute;
+        width: 450px;
+        height: 58px;
+        border-radius: 3px;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column  ;
+    }
+    .alert-danger {
+        background-color: #ED4337;
+        color: white;
+        text-align: center;
     }

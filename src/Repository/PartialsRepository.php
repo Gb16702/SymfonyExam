@@ -62,4 +62,5 @@ class PartialsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }

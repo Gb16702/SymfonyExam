@@ -27,7 +27,7 @@
 		<div class="backContainer">
 			<a href="{{path('home')}}" class="back" style = "color : rgb(111,54,227)">Retour à la page d'accueil</a>
 		</div>
-		<h1 class="registerTitle">Create your account</h1>
+		<h1 class="registerTitle">Créer votre compte</h1>
 		<div class="blocRegister">
 			<div class="blocRegisterForm">
 				<span class="edgeRegister"></span>
@@ -54,7 +54,7 @@
 					<div class="agreeTerms">{{ form_row(registrationForm.agreeTerms) }}</div>
 
 					<input id = "submitRegister" class = "submitRegister" type="submit" value="Register">
-					<a class = "registered" href ="{{ path('app_login') }}">Already registered ? Connect here</a>
+					<a class = "registered" href ="{{ path('app_login') }}">Déjà enregistré ? Se connecter ici</a>
 				</div>
 			</div>
 		</div>
@@ -88,5 +88,6 @@
 			})
         }
 </script> #}
+{% include "./partials/footer.html.twig" %}
 {% endblock %}
 

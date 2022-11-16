@@ -18,7 +18,7 @@
 		<div class="backContainer">
 			<a href="{{path('home')}}" class="back">Retour à la page d'accueil</a>
 		</div>
-		<h1 class="connexionTitle">Connect to your account</h1>
+		<h1 class="connexionTitle">Connectez-vous à votre compte</h1>
 		<div class="blocConnexion">
 			<div class="blocConnexionForm">
 				<span class="edge"></span>
@@ -30,11 +30,11 @@
 				<div class="blocConnexionInput">
 					<div class="form-group">
 						<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required>
-						<label for="inputUsername">Username</label>
+						<label for="inputUsername">Nom d'utilisateur</label>
 					</div>
 					<div class="form-group">
 						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-						<label for="inputPassword">Password</label>
+						<label for="inputPassword">Mot de passe</label>
 						<div class="password-icon">
 							<i class = "arrow" data-feather="arrow-up-circle"></i>
 							<i class = "eye" data-feather="eye"></i>
@@ -44,7 +44,7 @@
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 					<input id = "submit" class = "submit" type="submit" value="Log in">
-					<a class = "notRegistered" href ="{{ path('app_register') }}">Not a member yet ? Register here</a>
+					<a class = "notRegistered" href ="{{ path('app_register') }}">Pas encore membre, s'inscrire ici</a>
 				</div>
 			</div>
 		</div>

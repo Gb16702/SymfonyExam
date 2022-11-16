@@ -6,9 +6,13 @@ use App\Entity\Voitures;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MarquesRepository;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 #[ORM\Entity(repositoryClass: MarquesRepository::class)]
 #[Vich\Uploadable]
