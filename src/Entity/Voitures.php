@@ -54,6 +54,12 @@ class Voitures
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $owner = null;
+
+    #[ORM\Column]
+    private ?int $puissance = null;
+
     public function __construct()
     {
         $this->imagesVoitures = new ArrayCollection();
@@ -209,6 +215,30 @@ class Voitures
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getOwner(): ?int
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?int $owner): self
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getPuissance(): ?int
+    {
+        return $this->puissance;
+    }
+
+    public function setPuissance(int $puissance): self
+    {
+        $this->puissance = $puissance;
 
         return $this;
     }

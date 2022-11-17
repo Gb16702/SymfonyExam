@@ -50,6 +50,19 @@ class VoituresType extends AbstractType
                     'class' => 'form-control'
                 ],
             ])
+            ->add('puissance', IntegerType::class, [
+                "attr" => [
+                    'class' => 'form-control',
+                    "Placeholder" => "100"
+                ],
+            ])
+            ->add('owner', IntegerType::class, [
+                "attr" => [
+                    'class' => 'form-control',
+                    "Placeholder" => "0"
+                ],
+                "label" => "Nombre de propriétaires"
+            ])
             ->add('marque', EntityType::class, [
                 'class' => Marque::class,
                 'attr' => [

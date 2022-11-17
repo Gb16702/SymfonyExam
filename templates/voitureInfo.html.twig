@@ -94,6 +94,47 @@
             </div>
         </div>
     </div>
+    <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-solid fa-key"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Propriétaires</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>
+                    {% if voiture.owner < 1%}
+                    Pas de propriétaire
+                    {% else %}
+                         {% if voiture.owner > 1 %}
+                            {{voiture.owner}} propriétaire
+                        {% else %}
+                            {{voiture.owner}} propriétaires
+                        {% endif %}
+                    {% endif %}
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-solid fa-dumbbell"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Puissance</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>
+                    {{voiture.puissance}} chevaux
+                </h4>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 </div>
 

@@ -16,6 +16,18 @@
                 <td>{{ voiture.nom }}</td>
             </tr>
             <tr>
+                <th>Nombre de propriétaires</th>
+                {% if voiture.owner is null %}
+                    <td>0</td>
+                    {% else %}
+                <td>{{ voiture.owner }}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Puissance</th>
+                <td>{{ voiture.puissance }}</td>
+            </tr>
+            <tr>
                 <th>Prix</th>
                 <td>{{ voiture.prix }}</td>
             </tr>
