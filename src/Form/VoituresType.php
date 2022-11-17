@@ -50,11 +50,6 @@ class VoituresType extends AbstractType
                     'class' => 'form-control'
                 ],
             ])
-            ->add('slug', TextType::class, [
-                'attr' => [
-                    'class'=> 'form-control'
-                ]
-            ])
             ->add('marque', EntityType::class, [
                 'class' => Marque::class,
                 'attr' => [

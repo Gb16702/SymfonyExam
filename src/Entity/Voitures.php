@@ -59,7 +59,17 @@ class Voitures
         $this->imagesVoitures = new ArrayCollection();
     }
 
-    
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function initializeSlug():void
+    {
+        if(empty($this->slug))
+        {
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->nom.' '.uniqid());
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -181,13 +191,13 @@ class Voitures
         return $this;
     }
 
-    public function getSlug(): ?string
+    public function getSlug(): string
     {
-        return $this -> slug;
+        return $this->slug;
     }
     public function setSlug(string $slug): self
     {
-        $this -> slug = $slug;
+        $this->slug = $slug;
         return $this;
     }
 
