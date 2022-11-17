@@ -100,7 +100,7 @@ class VoituresController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_voitures_delete', methods: ['POST'])]
-    public function delete(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user, FlashyNotifier $flashy): Response
+    public function delete(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, FlashyNotifier $flashy): Response
     {
 
         if ($this->isCsrfTokenValid('delete'.$voiture->getId(), $request->request->get('_token'))) {

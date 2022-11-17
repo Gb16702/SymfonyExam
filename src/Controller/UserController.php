@@ -25,7 +25,9 @@ class UserController extends AbstractController
          return $this->render('user/index.html.twig', [
              "user" => $user,
             //  "marque" => $marqueRepo -> findAll()
-            "voitures" => $voiture -> findAll()
+            "voitures" => $voiture -> findBy([], $orderBy =[
+                "id" => "DESC"
+            ])
          ]);
      }
 
