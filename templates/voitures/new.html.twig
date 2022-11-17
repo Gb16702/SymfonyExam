@@ -11,4 +11,10 @@
 
 
 			{{ encore_entry_link_tags('formCars') }}
+               <script>
+               const form = document.querySelector('form')
+                    if(window.location.href.indexOf("new") > -1) {
+                         form.style.padding = " 0 20%"
+                    }
+               </script>
 {% endblock %}

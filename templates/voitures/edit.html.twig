@@ -7,9 +7,9 @@
 
     {{ include('voitures/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('home') }}">back to list</a>
+    <a class = "backToList" href="{{ path('home') }}">back to list</a>
 
     {{ include('voitures/_delete_form.html.twig') }}
 			{{ encore_entry_script_tags('formCars') }}
-    
+
 {% endblock %}

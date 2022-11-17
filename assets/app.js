@@ -13,7 +13,9 @@ import './js/_type.js'
 import './js/_cursor.js'
 import './js/_anime.js'
 import './js/_url.js'
+import flashy from './js/_flashy.js'
+window.flashy = flashy
 
 import MagnetMouse from 'magnet-mouse';
 // start the Stimulus application
-import './bootstrap';
+import "bootstrap/dist/js/bootstrap.bundle"

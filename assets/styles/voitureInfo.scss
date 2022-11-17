@@ -1,0 +1,269 @@
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    min-height: 100vh;
+    background-color: #363638;
+    margin-bottom: 390px;
+    border-bottom: 1px solid #52cf97;
+}
+
+
+::selection {
+    background-color: #363538;
+    color:#52cf97
+}
+.carInfoBloc {
+    display: flex;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+
+}
+.carInfoName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.carInfoName h1 {
+    font-weight: bold;
+    color: white;
+}
+.carInfoName h2 {
+    font-weight: lighter;
+    font-size: 18px;
+    color: #52cf97;
+}
+
+.bd-example {
+background-color: #ffffff;
+}
+
+.container {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    background-color: #363538;
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 330px;
+    background-color: white;
+}
+.col-md-8 {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0;
+}
+.blocGrid {
+    display: grid;
+    margin-top: 50px;
+    width: 100%;
+    height: 550px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 1% 6% 8% 6%;
+}
+.blocGridContentBloc {
+    flex-direction: row;
+    display: flex;
+    border: 1px solid rgb(85, 85, 85);
+    margin: 0 20px 20px 0;
+    justify-content: center;
+    transition: all .5s ease;
+}
+.blocGridContentBlocContentLeft {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 46px;
+    color: #52cf97;
+    border-right: 1px solid rgb(85, 85, 85);
+    transition: all .5s ease;
+
+}
+.blocGridContentBlocContentLeft i {
+    filter: drop-shadow(0px 2px 22px #202020);
+    transition: all 4s;
+
+
+}
+.blocGridContentBlocContentRight {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all .5s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.blocGridContentBlocContentRightTop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 50%;
+    transition: all 4s;
+
+}
+.blocGridContentBlocContentRightBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    transition: all 4s;
+
+    height: 50%;
+}
+.blocGridContentBlocContentRightTop h3 {
+    color: #52cf97;
+}
+.blocGridContentBlocContentRightBottom h4 {
+    color: white;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.containerFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -10;
+    width: 100%;
+    background-color: #363538;
+    color: white;
+    padding: 30px 0;
+    font-family: "roboto";
+    height: 390px;
+    opacity: .2;
+    border-top: 3px solid #52cf97;
+
+}
+.containerFooter.animate {
+   opacity: 1;
+   transition: opacity cubic-bezier(0.51, 0.56, 0.31, 0.87) .8s .13s;
+}
+.rowFooter {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   position: relative;
+   height: 320px;
+
+   a, h1 {
+       text-align: center;
+       color: rgb(255, 255, 255);
+   }
+   h1 {
+    color: #52cf97;
+   }
+}
+
+.hBloc {
+   height: 100%;
+   margin: 40px 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   flex-direction: column;
+   width: 100%;
+   border-radius: 7px;
+}
+.rowFooter:nth-child(2):before{
+   content: "";
+   background-color: var(--before, rgb(55, 55, 55));
+   width: 2px;
+   height: 30%;
+   position: absolute;
+   left: 0;
+   top: 50%;
+}
+   .rowFooter:nth-child(2):after {
+       content: "";
+       position: absolute;
+       top: 50%;
+       background-color: var(--after, rgb(55, 55, 55));
+       width: 2px;
+       height: 30%;
+       left:100%
+   }
+
+.h4Bloc {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+.h4Bloc a {
+line-height: 2.2;
+font-size: 17px;
+text-decoration: none;
+}
+.blocFooter {
+   height: 320px;
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 20px;
+   padding: 0 7%;
+}
+.copyFooter {
+   color: rgb(255, 255, 255);
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+// ! Nav
+.containerNav {
+    position: relative;
+}
+.containerNav nav {
+flex-direction: column;
+}
+.containerNav nav .containerUl {
+    max-width: 88%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.containerNav nav ul {
+    margin: 0;
+    padding: 0;
+}
+.containerNav nav ul li a {
+    text-shadow: none;
+    transition: all .4s;
+    filter: none;
+}
+.containerNav nav ul li:hover {
+    filter: none;
+}
+.containerNav nav ul li a:hover {
+    color: #52cf97;
+}
+.blocFas a {
+    color: #52cf97;
+}
+.carac {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+}
+.cText {
+    color: white;
+}

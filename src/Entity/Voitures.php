@@ -9,8 +9,9 @@ use App\Repository\VoituresRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Cocur\Slugify\Slugify;
 
-
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: VoituresRepository::class)]
 #[Vich\Uploadable]
 
@@ -58,6 +59,7 @@ class Voitures
         $this->imagesVoitures = new ArrayCollection();
     }
 
+    
     public function getId(): ?int
     {
         return $this->id;

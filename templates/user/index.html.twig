@@ -14,6 +14,7 @@
     Bonjour, {{user.username}}
 </h2>
 
+
     {% if user.picture is null %}
          {# <div class="userProfilePicture" style = "background-image: url('https://picsum.photos/300/300'); background-size:cover; background-repeat: no-repeat"></div> #}
          <div class="userProfilePicture" style = "background-image: url('https://picsum.photos/300/300'); background-size:cover; background-repeat: no-repeat"></div>
@@ -35,20 +36,33 @@
 <div class="userProfileBloc2">
 
 {% if user.userVoiture | length %}
-<p class = "text-center">Les voitures que vous avez ajoutées :</p>
+    {% if user.userVoiture | length > 1 %}
+            <p class = "text-center">Vous avez ajouté {{user.userVoiture | length}} voitures</p>
+        {% else %}
+            <p class = "text-center">Vous avez ajouté {{user.userVoiture | length}} voiture</p>
+    {% endif %}
+
 <div class="grid">
     {% for voiture in user.userVoiture %}
+
+
     <div class="cardUser">
         <div class="cardUserTop" style = "background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], 'imageFile') }})">
-
         </div>
         <div class="cardUserBottom">
-        <div class="cardUserBottomInfoCar">
-             {{voiture.nom}}
+        <div class = "cardUserBottomInfoCarBlock">
+        <div class="userBottomInfoCarIconsBlock">
+        <a class = "editI" href="{{path('app_voitures_edit', {id: voiture.id })}}"><i class="fa-solid fa-pen-to-square"></i></a>
+            </div>
+            <div class="cardUserBottomInfoCar">
+                {{voiture.nom}}
+            </div>
+            <div class="userBottomInfoCarIconsBlock">
+            <a class = "deleteI" href="{{path('app_voitures_delete', {id: voiture.id})}}"><i class="fa-solid fa-trash-can-arrow-up"></i></a>
+            </div>
         </div>
         <div class="cardUserBottomAction">
-            <a href="{{path('app_voitures_edit', {id: voiture.id })}}">Modifier la voiture</a>
-            <a href="{{path('app_voitures_delete', {id: voiture.id})}}">Supprimer la voiture</a>
+            <a class = "seeTheCar" href="{{path('app_cars', {slug:voiture.slug})}}">Voir la voiture</a>
         </div>
 
         </div>
@@ -68,5 +82,4 @@
 
 {% include "./partials/footer.html.twig" %}
 {{ encore_entry_link_tags('userProfile') }}
-
 {% endblock %}

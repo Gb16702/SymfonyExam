@@ -223,6 +223,15 @@ justify-content: center;
     stroke: black;
     stroke-width: 5px;
 }
+.Info {
+    filter: drop-shadow(0 0 3px #52cf97);
+    display: none;
+}
+.Info path, .Info g {
+    fill: #52cf97;
+    stroke: black;
+    stroke-width: 7px;
+}
 @keyframes updown {
     0% {
         top: 30%;

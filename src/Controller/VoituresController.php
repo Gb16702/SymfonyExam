@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Voitures;
 use App\Entity\User;
+use App\Entity\Voitures;
 use App\Form\VoituresType;
 use App\Entity\ImagesVoitures;
 use App\Repository\UserRepository;
 use App\Repository\VoituresRepository;
 use Symfony\Component\HttpFoundation\Request;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,7 +33,7 @@ class VoituresController extends AbstractController
     }
 
     #[Route('/new/{slug}', name: 'app_voitures_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user): Response
+    public function new(Request $request, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user, FlashyNotifier $flashy): Response
     {
         $voiture = new Voitures();
         $form = $this->createForm(VoituresType::class, $voiture);
@@ -55,10 +56,12 @@ class VoituresController extends AbstractController
             $voiture->setUser($this->getUser());
             $voituresRepository->save($voiture, true);
 
-            $this->addFlash(
-                'success',
-                "La voiture <strong>{$voiture -> getNom()}</strong> a bien été ajoutée"
-            );
+            $flashy->success(  "La voiture {$voiture->getNom()} a bien été ajoutée");
+            // $this->addFlash(
+            //     'success',
+            //     "Ca marche paaaaas"
+            // );
+
 
             return $this->redirectToRoute('app_brands', [], Response::HTTP_SEE_OTHER);
         }
@@ -97,12 +100,16 @@ class VoituresController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_voitures_delete', methods: ['POST'])]
-    public function delete(Request $request, Voitures $voiture, VoituresRepository $voituresRepository): Response
+    public function delete(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user, FlashyNotifier $flashy): Response
     {
+
         if ($this->isCsrfTokenValid('delete'.$voiture->getId(), $request->request->get('_token'))) {
             $voituresRepository->remove($voiture, true);
         }
+        $flashy->warning(  "La voiture {$voiture->getNom()} a bien été supprimée");
+        return $this->redirectToRoute('app_brands', [
+        ], Response::HTTP_SEE_OTHER);
 
-        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
+
 }

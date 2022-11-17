@@ -124,7 +124,6 @@
                     labelReg[1].style.top = "50%"
                 }
             })
-            import MagnetMouse from 'magnet-mouse';
 
 
             // la checkbox

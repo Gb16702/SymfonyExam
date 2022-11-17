@@ -1,7 +1,111 @@
 {% extends "base.html.twig" %}
 {% block body %}
-    <div class="carInfoName">
-        {{voiture.nom}}
+    {% include "./partials/header.html.twig" %}
+    <div class="carInfoBloc">
+        <div class="carInfoName">
+            <h1>{{voiture.nom}}</h1>
+            <h2>{{voiture.marque}}</h2>
+        </div>
     </div>
-    {{voiture.description}}
+     <div class="container">
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <div class="bd-example">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-indicators">
+
+                {% for image in voiture.imagesVoitures %}
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{loop.index0}}" {% if loop.first %} class="active" aria-current="true" {% endif %} aria-label="Slide {{loop.index}}"></button>
+                {% endfor %}
+        </div>
+
+      <div class="carousel-inner">
+            {% for image in voiture.imagesVoitures %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="d-block w-100" alt="">
+                </div>
+            {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true" onclick = yes()></span>
+                    <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="carac">
+            <h4 class="cText">Caractéristiques</h4>
+        </div>
+<div class="blocGrid">
+    <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-solid fa-file-medical"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Description</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>{{voiture.description}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-solid fa-car-battery"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Carburant</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>{{voiture.carburant}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-solid fa-truck-monster"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Kilométrage</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>{{voiture.km}} kilomètres</h4>
+            </div>
+        </div>
+    </div>
+       <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-regular fa-credit-card"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Prix</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>{{voiture.prix}} euros</h4>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+    {% include "./partials/footer.html.twig" %}
+    {{encore_entry_link_tags('voitureInfo')}}
+    {{encore_entry_script_tags('logo')}}
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+
 {% endblock %}
