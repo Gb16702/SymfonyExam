@@ -13,7 +13,8 @@
 {% else %}
     Pas de voitures
 {% endif %}
-{% for voiture in marques.voitures %}
+
+{% for voiture in pagination %}
 <div class="containerShowVoituresCard">
     <div class="containerShowVoituresImage">
 
@@ -34,9 +35,9 @@
 </div>
 {% endfor %}
 </div>
-{# <div class="paginationContainer">
-    {{ knp_pagination_render(marqueCard) }}
-</div> #}
+ <div class="paginationContainer">
+    {{ knp_pagination_render(pagination) }}
+</div>
 </div>
 
 
@@ -91,8 +92,6 @@ function getCurrentURL () {
     console.log(bloc2Before.backgroundColor)
     bloc2.style.setProperty('--before', white)
     bloc2.style.setProperty('--after', white)
-
-
 
     for (const liste of footer.children) {
        // console.log(liste.tagName)

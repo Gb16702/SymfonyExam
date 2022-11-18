@@ -132,7 +132,51 @@
             </div>
         </div>
     </div>
-
+     <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+           <i class="fa-solid fa-gear"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Transmission</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>
+                    {{voiture.transmission}}
+                </h4>
+            </div>
+        </div>
+    </div>
+<div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-solid fa-road"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Cylindrée</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>
+                    {{voiture.cylinder}} litre
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="blocGridContentBloc">
+        <div class="blocGridContentBlocContentLeft">
+            <i class="fa-regular fa-calendar-days"></i>
+        </div>
+        <div class="blocGridContentBlocContentRight">
+            <div class="blocGridContentBlocContentRightTop">
+                <h3>Date de sortie</h3>
+            </div>
+            <div class="blocGridContentBlocContentRightBottom">
+                <h4>
+                    {{voiture.Year | date("m/d/Y")}}
+                </h4>
+            </div>
+        </div>
+    </div>
 
 
 </div>

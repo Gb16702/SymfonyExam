@@ -1,3 +1,8 @@
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker-bs4.min.css">
+{% endblock %}
+
 {{ form_start(form) }}
  <div class="row">
         <div class="col-4">
@@ -5,6 +10,7 @@
             {{ form_row(form.Titre) }}
             {{ form_row(form.carburant) }}
             {{ form_row(form.puissance) }}
+            {{ form_row(form.cylinder) }}
 
         </div>
 
@@ -13,6 +19,8 @@
         {{ form_row(form.owner) }}
         {{form_row(form.prix)}}
         {{form_row(form.km)}}
+        {{form_row(form.transmission)}}
+        {{form_row(form.Year)}}
         </div>
 
  </div>
@@ -25,3 +33,15 @@
 
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker.min.js"></script>
+<script>
+const year = document.querySelector('#voitures_Year')
+
+const datePicker = new Datepicker(year,{
+            format: 'dd/mm/yyyy',
+            maxDate: new Date()
+        })
+</script>
+{% endblock %}

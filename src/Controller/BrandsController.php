@@ -27,20 +27,20 @@ class BrandsController extends AbstractController
 
     #[Route('/marques/{slug}', name: 'app_showRoom')]
 
-    public function voituresShowRoom(EntityManagerInterface $em, PaginatorInterface $paginator, VoituresRepository $voiture, Marque $marques, Request $request, PaginatorInterface $paginatorInterface, MarquesRepository $marque): Response
+    public function voituresShowRoom(EntityManagerInterface $em, PaginatorInterface $paginator, VoituresRepository $repository, Marque $marques, Request $request, PaginatorInterface $paginatorInterface, MarquesRepository $marque): Response
      {
         // $dql   = "SELECT v FROM VoituresRepository:Voitures v";
         // $query = $em->createQuery($dql);
 
 
-        // $pagination = $paginator->paginate(
-        //     $query,
-        //     $request->query->getInt('page', 1), 10
-        //  );
-        return $this -> render('voitureShowRoom.html.twig', [
+        $pagination = $paginator->paginate(
+            $repository->findBy([]),
+            $request->query->getInt('page', 1),
+            6
+        );
+        return $this->render('voitureShowRoom.html.twig', [
+            'pagination' => $pagination,
             "marques" => $marques
-            // "marqueCard" => $pagination
-            // "marqueCard" => $voiture->paginateCar($request->query->getInt("page", 1))
         ]);
      }
      #[Route('/cars/{slug}', name: 'app_cars', methods: ['GET'])]

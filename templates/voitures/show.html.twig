@@ -47,6 +47,10 @@
                 <th>Carburant</th>
                 <td>{{ voiture.carburant }}</td>
             </tr>
+              <tr>
+                <th>Transmission</th>
+                <td>{{ voiture.transmission }}</td>
+            </tr>
         </tbody>
     </table>
 
@@ -57,4 +61,6 @@
     {{ include('voitures/_delete_form.html.twig') }}
 
 			{{ encore_entry_link_tags('formCars') }}
+
+       
 {% endblock %}

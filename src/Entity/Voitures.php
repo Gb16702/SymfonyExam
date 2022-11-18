@@ -60,6 +60,15 @@ class Voitures
     #[ORM\Column]
     private ?int $puissance = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $transmission = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $Year = null;
+
+    #[ORM\Column]
+    private ?int $cylinder = null;
+
     public function __construct()
     {
         $this->imagesVoitures = new ArrayCollection();
@@ -239,6 +248,42 @@ class Voitures
     public function setPuissance(int $puissance): self
     {
         $this->puissance = $puissance;
+
+        return $this;
+    }
+
+    public function getTransmission(): ?string
+    {
+        return $this->transmission;
+    }
+
+    public function setTransmission(string $transmission): self
+    {
+        $this->transmission = $transmission;
+
+        return $this;
+    }
+
+    public function getYear(): ?\DateTimeInterface
+    {
+        return $this->Year;
+    }
+
+    public function setYear(\DateTimeInterface $Year): self
+    {
+        $this->Year = $Year;
+
+        return $this;
+    }
+
+    public function getCylinder(): ?int
+    {
+        return $this->cylinder;
+    }
+
+    public function setCylinder(int $cylinder): self
+    {
+        $this->cylinder = $cylinder;
 
         return $this;
     }
