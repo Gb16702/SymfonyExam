@@ -1,9 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 
+::selection {
+    background-color:#1a1a1a;
+    color: #52cf97;
+}
+
+*{
+    box-shadow: none !important;
+    outline: none !important;
+}
  body {
-//     background-color: #363538;
+     background-color: #1a1a1a;
      min-height: 100vh;
- }
+     }
 
  .row {
     display: flex;
@@ -11,11 +20,34 @@
     justify-content: center;
     flex-direction: row;
  }
+
+ input, select, textarea {
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    border: 1px solid #363538 !important;
+    color: #707070 !important;
+    resize: none !important;
+
+ }
+ input:focus, textarea:focus, select:focus {
+    border: 1px solid #52cf97 !important;
+ }
+option {
+    color: red !important;
+}
  form {
     padding: 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
  }
  .col-4 {
     width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
  }
 form div {
     width: 95%;
@@ -24,51 +56,211 @@ form div {
 #col-4 {
     width: 95%;
 }
+.col-4 div {
+    height: 90px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 #voitures_images {
 margin-top: 20px;
 margin-bottom: 10px;
 width: 95%;
 }
 .btn {
-    background-color: greenyellow;
-    margin-top: 15px;
-    width: 100px;
+    background-color: transparent;
+    border: 1px solid #52cf97;
+    color: #52cf97;
+    margin-top: 25px;
     height: 40px;
+    text-align: center;
+    padding: 0;
+    width: 90.5%;
+    transition: .4s;
+    border-radius: 0;
+}
+input[type="number"] {
+  -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.btn:hover {
+    background-color: #52cf97;
+}
+label {
+color: #52cf97;
+}
+input:focus {
+    color: #52cf97 !important;
 }
 h1 {
     text-align: center;
     font-size: 29px;
     margin: 40px 0;
+    color: rgb(92, 92, 92);
 }
-.backToList {
+a {
     position: absolute;
     top: 4px;
     left: 4px;
     text-decoration: none;
+    color: #52cf97;
 }
 a:hover {
     text-decoration: underline;
+    color: #52cf97;
 }
 .editCar {
     text-decoration: none;
-    color: black;
-    padding: 10px;
+    color: #52cf97;
+    padding: 10px 0;
     border-radius: 2px;
-    background-color: greenyellow;
     margin-top: 15px;
     border-radius: 8%;
     transition: .3s;
     min-width: 100px;
-    display: inline-block;
-    text-align: center;
     height: 40px;
 }
 .editCar:hover {
-    color: black;
-    text-decoration: none;
-    background-color: transparent;
+    text-decoration: underline;
 }
 
 form {
     padding: 0;
+}
+ #form-marque-desc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 95%;
+}
+
+.form-image {
+    display: flex;
+    width: 95%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-control input:focus {
+    color: red !important;
+}
+.form-control::placeholder {
+    color: #707070;
+}
+input::file-selector-button {
+    color: #52cf97 !important;
+    background-color: transparent !important;
+}
+
+.datepicker-picker, .datepicker-dropdown {
+background-color: #1a1a1a;
+}
+.day, .dow, .decade, .year, .month {
+    color: #52cf97;
+}
+.day:hover, .datepicker-cell.month:hover, .year:hover, .decade:hover {
+    background-color: #ccc !important;
+    color: #1a1a1a !important;
+}
+.day.selected.focused, .decade.selected, .year.selected, .month.selected.focused {
+    background-color: #52cf97;
+    color: #1a1a1a;
+}
+.button.view-switch {
+    background-color: #1a1a1a;
+    color: #52cf97;
+}
+.button.prev-btn, .button.next-btn {
+    background-color: #1a1a1a;
+    color: #52cf97;
+}
+.disabled {
+    color: #ccc;
+}
+
+
+// ! message d'erreurs =>
+
+ul {
+    list-style: none;
+    bottom: 0;
+    font-size: 10px;
+    color: rgb(213, 24, 62);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+li {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+// ! delete =>
+
+td, th {
+    color: #52cf97;
+    border: none;
+}
+tbody {
+    padding: 0 14%;
+}
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+tbody {
+    width: 800px;
+}
+tr {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(99, 99, 99);
+}
+
+// ! compteur de caractères
+
+.form-counter {
+    position: absolute !important;
+    top: 50%;
+    right: 10px;
+    height: 20px !important;
+    transform: translateY(-60%);
+    width: 20px !important;
+    background: #1a1a1a;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #52cf97;
+}
+.form-counter2 {
+    position: absolute !important;
+    top: 50%;
+    right: 10px;
+    height: 20px !important;
+    transform: translateY(-60%);
+    width: 20px !important;
+    background: #1a1a1a;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #52cf97;
 }

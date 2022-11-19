@@ -6,7 +6,7 @@ body {
 }
 
 ::selection {
-    background-color: #363538;
+    background-color: #242424;
     color: #52cf97;
 }
 
@@ -18,7 +18,7 @@ body {
 }
 
 .totalContainer {
-    background-color: #363538;
+    background-color: #242424;
 }
 
 .backToWebsite::after {
@@ -58,7 +58,7 @@ body {
     min-height: 44vh;
     flex-direction: column;
     padding: 10px;
-    background-color: #363538;
+    background-color: #242424;
 }
 .userProfileBloc2 {
 background-color: white;
@@ -88,7 +88,7 @@ transition: background 250ms ease-in;
     background-position: 0;
     box-shadow: none;
     border: none;
-    color: #363538;
+    color: #242424;
 }
 
 
@@ -108,7 +108,7 @@ transition: background 250ms ease-in;
     align-items: center;
     box-shadow: 0 0 12px -2px rgb(172, 172, 172);
     border: 1px solid rgb(216, 216, 216);
-    background-color: #363538;
+    background-color: #1f1f1f;
     border-radius: 2px;
 }
 .aAddCar {
@@ -267,7 +267,7 @@ transition: background 250ms ease-in;
      left: 0;
      z-index: -10;
      width: 100%;
-     background-color: #363538;
+     background-color: #242424;
      color: white;
      padding: 30px 0;
      font-family: "roboto";
@@ -304,9 +304,12 @@ transition: background 250ms ease-in;
     width: 100%;
     border-radius: 7px;
 }
+.rowFooter h1 {
+    color: #52cf97;
+}
 .rowFooter:nth-child(2):before{
     content: "";
-    background-color: var(--before, rgb(55, 55, 55));
+    background-color: transparent;
     width: 2px;
     height: 30%;
     position: absolute;
@@ -317,7 +320,7 @@ transition: background 250ms ease-in;
         content: "";
         position: absolute;
         top: 50%;
-        background-color: var(--after, rgb(55, 55, 55));
+        background-color: transparent;
         width: 2px;
         height: 30%;
         left:100%

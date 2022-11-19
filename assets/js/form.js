@@ -54,6 +54,7 @@ console.log('ok');
 		}
 		container.addEventListener("mouseenter", e => {
 			enter()
+            container.getElementsByTagName.display = "block"
 		})
 		container.addEventListener("mouseleave", f => {
 			leave()

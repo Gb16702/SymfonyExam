@@ -43,9 +43,9 @@
     {% endif %}
 
 <div class="grid">
+
+
     {% for voiture in user.userVoiture %}
-
-
     <div class="cardUser">
         <div class="cardUserTop" style = "background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], 'imageFile') }})">
         </div>
@@ -82,4 +82,5 @@
 
 {% include "./partials/footer.html.twig" %}
 {{ encore_entry_link_tags('userProfile') }}
+{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 {% endblock %}

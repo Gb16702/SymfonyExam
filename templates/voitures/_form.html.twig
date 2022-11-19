@@ -6,28 +6,80 @@
 {{ form_start(form) }}
  <div class="row">
         <div class="col-4">
-            {{ form_row(form.nom) }}
-            {{ form_row(form.Titre) }}
-            {{ form_row(form.carburant) }}
-            {{ form_row(form.puissance) }}
-            {{ form_row(form.cylinder) }}
-
+            <div>
+                <label for="">Nom *</label>
+                {{ form_widget(form.nom) }}
+                {{form_errors(form.nom)}}
+                <div class="form-counter"></div>
+                </div>
+            <div>
+                <label for="">Titre</label>
+                {{ form_widget(form.Titre) }}
+                {{form_errors(form.Titre)}}
+            </div>
+            <div>
+                <label for="">Carburant *</label>
+                {{ form_widget(form.carburant) }}
+                {{form_errors(form.carburant)}}
+            </div>
+             <div>
+                <label for="">Puissance *</label>
+                {{ form_widget(form.puissance) }}
+                {{form_errors(form.puissance)}}
+            </div>
+             <div>
+                <label for="">Cylindrée *</label>
+                {{ form_widget(form.cylinder) }}
+                {{form_errors(form.cylinder)}}
+            </div>
         </div>
 
 
         <div class="col-4">
-        {{ form_row(form.owner) }}
-        {{form_row(form.prix)}}
-        {{form_row(form.km)}}
-        {{form_row(form.transmission)}}
-        {{form_row(form.Year)}}
+            <div>
+                <label for="">Propriétaires *</label>
+                {{ form_widget(form.owner) }}
+                {{form_errors(form.owner)}}
+            </div>
+            <div>
+                <label for="">Prix *</label>
+                {{ form_widget(form.prix) }}
+                {{form_errors(form.prix)}}
+            </div>
+            <div>
+                <label for="">Kilométrage *</label>
+                {{ form_widget(form.km) }}
+                {{form_errors(form.km)}}
+            </div>
+            <div>
+                <label for="">Transmission *</label>
+                {{ form_widget(form.transmission) }}
+                {{form_errors(form.transmission)}}
+            </div>
+            <div>
+                <label for="">Date de mise en circulation</label>
+                {{ form_widget(form.Year) }}
+                {{form_errors(form.Year)}}
+            </div>
         </div>
 
- </div>
-        {{ form_row(form.images) }}
-        <div class="col-4" id = "col-4">
-            {{ form_row(form.marque) }}
-            {{ form_row(form.description) }}
+ </div class = "form-image">
+    <div class="form-image">
+                {{ form_widget(form.images) }}
+                {{form_errors(form.images)}}
+    </div>
+        <div class="col-4" id = "form-marque-desc">
+            <div>
+                <label for="">Marque *</label>
+                {{ form_widget(form.marque) }}
+                {{form_errors(form.marque)}}
+            </div>
+            <div>
+                <label for="">Description *</label>
+                {{ form_widget(form.description) }}
+                {{form_errors(form.description)}}
+                <div class="form-counter2"></div>
+            </div>
         </div>
     </div>
 
@@ -40,8 +92,47 @@
 const year = document.querySelector('#voitures_Year')
 
 const datePicker = new Datepicker(year,{
-            format: 'dd/mm/yyyy',
+            format: 'yyyy',
             maxDate: new Date()
         })
+</script>
+<script>
+// compteur de caractères JS
+    const input = document.querySelector('#voitures_nom')
+    const counter = document.querySelector('.form-counter')
+    console.log(input)
+
+    const max = input.getAttribute('maxlength')
+    input.addEventListener('input', event => {
+        const valueLength = event.target.value.length;
+        const left = max - valueLength
+
+        if(left == 0) {
+            counter.style.color = "rgb(213, 24, 62)"
+        }else {
+            if(left < 0) return;
+            counter.style = ""
+        }
+        counter.innerText = left
+    })
+
+</script>
+<script>
+const counter2 = document.querySelector('.form-counter2')
+const area = document.querySelector("#voitures_description")
+
+const max2 = area.getAttribute('maxlength')
+ area.addEventListener('input', e => {
+        const valueLength2 = e.target.value.length;
+        const left2 = max2 - valueLength2
+
+        if(left2 == 0) {
+            counter2.style.color = "rgb(213, 24, 62)"
+        }else {
+            if(left2 < 0) return;
+            counter2.style = ""
+        }
+        counter2.innerText = left2
+    })
 </script>
 {% endblock %}

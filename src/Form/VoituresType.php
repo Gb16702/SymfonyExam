@@ -35,28 +35,35 @@ class VoituresType extends AbstractType
             ->add('nom', TextType::class, [
                 "attr" => [
                     'class' => 'form-control',
-                    'placeholder' => 'Le nom du modèle de la voiture'
+                    'placeholder' => 'Le nom du modèle de la voiture',
+                    'maxLength' => 25
                 ],
                 "label" => "Nom *"
                 ])
             ->add('prix', IntegerType::class, [
                'attr' => [
                     "class" => "form-control",
-                    'placeholder' => 'Le prix de la voiture'
+                    'placeholder' => 'Le prix de la voiture',
+                    'step' => 1,
+                    'min' => 0,
+                    'max' => 5000000
                ],
                "label" => "Prix *"
             ])
             ->add('km', IntegerType::class, [
                 'attr' => [
                     'class' => "form-control",
-                    'placeholder' => 'Le kilométrage de la voiture'
+                    'placeholder' => 'Le kilométrage de la voiture',
+                    "step" => 1,
+                    "min" => 0
                 ],
                 'label' => 'Kilométrage *',
             ])
             ->add('Titre', TextType::class, [
                 "attr" => [
                     'class' => 'form-control',
-                    'placeholder' => 'Le titre de la voiture'
+                    'placeholder' => 'Le titre de la voiture',
+                    'maxLength' => 20
                 ],
                 'required' => false
             ])
@@ -64,6 +71,7 @@ class VoituresType extends AbstractType
                 "attr" => [
                     'class' => 'form-control',
                     'placeholder' => 'Une description de la voiture',
+                    'maxLength' => 350
                 ],
                 'required' => false
             ])
@@ -81,9 +89,12 @@ class VoituresType extends AbstractType
             ->add('puissance', IntegerType::class, [
                 "attr" => [
                     'class' => 'form-control',
-                    "Placeholder" => "100"
+                    "Placeholder" => "La puissance de la voiture",
+                    "step" => 1,
+                    "min" => 0,
+                    "max" => 2000
                 ],
-                "label" => "Puissance *"
+                "label" => "Puissance *",
             ])
             ->add('cylinder', choiceType::class, [
                 'choices' => [
@@ -98,9 +109,11 @@ class VoituresType extends AbstractType
             ])
             ->add('Year', TextType::class, [
                 "attr" => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
+                    'placeholder' => 'Choisir une date :',
                 ],
-                'label' => 'Date de mise en circulation *'
+                'label' => 'Date de mise en circulation',
+                'required' => false
             ])
             ->add('transmission', ChoiceType::class, [
                 'choices' => [
@@ -115,7 +128,9 @@ class VoituresType extends AbstractType
             ->add('owner', IntegerType::class, [
                 "attr" => [
                     'class' => 'form-control',
-                    "Placeholder" => "0"
+                    "Placeholder" => "Le nombre de propriétaires de la voiture",
+                    "min" => 0,
+                    "max" => 4
                 ],
                 "label" => "Nombre de propriétaires *"
             ])

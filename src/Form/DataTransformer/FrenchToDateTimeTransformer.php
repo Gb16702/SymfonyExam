@@ -14,7 +14,7 @@ class FrenchToDateTimeTransformer implements DataTransformerInterface
             return '';
         }
 
-        return $date->format('d/m/Y');
+        return $date->format('Y');
     }
 
     public function reverseTransform($frenchDate)
@@ -24,7 +24,7 @@ class FrenchToDateTimeTransformer implements DataTransformerInterface
             throw new TransformationFailedException("Vous devez fournir une date!");
         }
 
-        $date = \DateTime::createFromFormat('d/m/Y',$frenchDate);
+        $date = \DateTime::createFromFormat('Y',$frenchDate);
 
         if($date === false)
         {

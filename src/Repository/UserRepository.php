@@ -56,6 +56,18 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($user, true);
     }
 
+    public function indexAction()
+{
+    $em = $this->getDoctrine()->getManager();
+    $entities = $em
+        ->getRepository('EventBundle:Event')
+        ->createQueryBuilder('e')
+        ->addOrderBy('e.time', 'ASC')
+        ->getQuery()
+        ->execute()
+    ;
+}
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

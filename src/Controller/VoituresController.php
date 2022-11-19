@@ -8,6 +8,7 @@ use App\Form\VoituresType;
 use App\Entity\ImagesVoitures;
 use App\Repository\UserRepository;
 use App\Repository\VoituresRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +34,7 @@ class VoituresController extends AbstractController
     }
 
     #[Route('/new/{slug}', name: 'app_voitures_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user, FlashyNotifier $flashy): Response
+    public function new(Request $request, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user, FlashyNotifier $flashy, EntityManagerInterface $manager): Response
     {
         $voiture = new Voitures();
         $form = $this->createForm(VoituresType::class, $voiture);
@@ -56,14 +57,16 @@ class VoituresController extends AbstractController
             $voiture->setUser($this->getUser());
             $voituresRepository->save($voiture, true);
 
-            $flashy->success(  "La voiture {$voiture->getNom()} a bien été ajoutée");
-            // $this->addFlash(
-            //     'success',
-            //     "Ca marche paaaaas"
-            // );
+            $manager -> persist($voiture);
+            $manager -> flush();
+
+            $flashy->success(  "La voiture {$voiture->getNom()} a bien été modifiée");
 
 
-            return $this->redirectToRoute('app_brands', [], Response::HTTP_SEE_OTHER);
+
+            return $this->redirectToRoute('app_user', [
+                'slug' => $user -> getSlug()
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('voitures/new.html.twig', [
@@ -82,13 +85,16 @@ class VoituresController extends AbstractController
     }
 
     #[Route('/myProfile/{id}/edit', name: 'app_voitures_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Voitures $voiture, VoituresRepository $voituresRepository): Response
+    public function edit(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, FlashyNotifier $flashy): Response
     {
         $form = $this->createForm(VoituresType::class, $voiture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $voituresRepository->save($voiture, true);
+
+            $flashy->success(  "La voiture {$voiture->getNom()} a bien été ajoutée");
+
 
             return $this->redirectToRoute('app_brands', [], Response::HTTP_SEE_OTHER);
         }
@@ -106,10 +112,8 @@ class VoituresController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$voiture->getId(), $request->request->get('_token'))) {
             $voituresRepository->remove($voiture, true);
         }
+        $referer = $request->headers->get('referer');
         $flashy->warning(  "La voiture {$voiture->getNom()} a bien été supprimée");
-        return $this->redirectToRoute('app_brands', [
-        ], Response::HTTP_SEE_OTHER);
-
+        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
-
 }

@@ -8,17 +8,11 @@
     <h1>Ajouter une nouvelle voiture</h1>
 
     {{ include('voitures/_form.html.twig') }}
-
-
 			{{ encore_entry_link_tags('formCars') }}
                <script>
                const form = document.querySelector('form')
                     if(window.location.href.indexOf("new") > -1) {
-                         form.style.padding = " 0 20%"
+                         form.style.padding = " 0 13%"
                     }
                </script>
-
-
-
-
 {% endblock %}

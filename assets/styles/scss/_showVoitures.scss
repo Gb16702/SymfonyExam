@@ -53,3 +53,24 @@ transition: .4s;
 .showVoituresLink:hover {
     text-decoration: underline;
 }
+
+.containerMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 13px;
+
+    h4{
+        color: rgb(162, 162, 162);
+        height: 40px;
+        span {
+           color: rgb(188, 57, 57);
+        }
+        span:hover {
+            text-decoration: underline;
+        }
+    }
+}

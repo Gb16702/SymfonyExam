@@ -8,6 +8,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Proxies\__CG__\App\Entity\Marques;
+use Symfony\Flex\Response;
 
 /**
  * @extends ServiceEntityRepository<Voitures>
@@ -42,6 +43,9 @@ class VoituresRepository extends ServiceEntityRepository
         }
     }
 
+    // public function sort(): Response {
+
+    // }
 
     // public function paginateCar(int $page, ?Marques $marques = null): PaginationInterface
 
