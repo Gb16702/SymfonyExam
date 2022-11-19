@@ -1,15 +1,25 @@
 {% extends "base.html.twig" %}
 {% block body %}
     {% include "./partials/header.html.twig" %}
+
+    <div class="modal">
+        <div class="modal-tit">
+            <h2>Description de {{voiture.nom}}</h2>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-content">
+            <h3>{{voiture.description}}</h3>
+        </div>
+    </div>
     <div class="carInfoBloc">
         <div class="carInfoName">
             <h1>{{voiture.nom}}</h1>
             <h2>{{voiture.marque}}</h2>
         </div>
     </div>
-     <div class="container">
-        <div class="row">
-            <div class="col-md-8 mb-3">
+     <div class="containerVoitureInfo">
+        <div class="sous-containerVoitureInfo">
+            <div class="sous-sous-containerVoitureInfo">
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                         <div class="carousel-indicators">
@@ -22,7 +32,8 @@
       <div class="carousel-inner">
             {% for image in voiture.imagesVoitures %}
                 <div class="carousel-item {% if loop.first %}active{% endif %}">
-                        <img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="d-block w-100" alt="">
+                        {# <img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="blocImage" alt=""> #}
+                        <div class="blocImage"  style="background-image: url({{ vich_uploader_asset(image, 'imageFile') }}); background-size: cover; background-position: center;"></div>
                 </div>
             {% endfor %}
             </div>
@@ -51,7 +62,8 @@
                 <h3>Description</h3>
             </div>
             <div class="blocGridContentBlocContentRightBottom">
-                <h4>{{voiture.description}}</h4>
+                <h4 class = hDesc>{{voiture.description}}</h4>
+                <p class = "readMore" id = "r">Lire la suite</p>
             </div>
         </div>
     </div>
@@ -90,7 +102,7 @@
                 <h3>Prix</h3>
             </div>
             <div class="blocGridContentBlocContentRightBottom">
-                <h4>{{voiture.prix}} euros</h4>
+                <h4 class = "hPrix">{{voiture.prix}} euros</h4>
             </div>
         </div>
     </div>
@@ -126,7 +138,7 @@
                 <h3>Puissance</h3>
             </div>
             <div class="blocGridContentBlocContentRightBottom">
-                <h4>
+                <h4 class = "hPuissance">
                     {{voiture.puissance}} chevaux
                 </h4>
             </div>
@@ -188,9 +200,17 @@
     {% include "./partials/footer.html.twig" %}
     {{encore_entry_link_tags('voitureInfo')}}
     {{encore_entry_script_tags('logo')}}
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 {% endblock %}
 
 {% block javascripts %}
     {{parent()}}
+    <script>
+            const str ={{voiture.description | json_encode() | raw}}
+            const length = str.length
+    </script>
+    
 
 {% endblock %}
