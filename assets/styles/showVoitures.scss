@@ -8,7 +8,7 @@ body {
 .containerMessage {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     flex-direction: column;
     height: 200px;
     border: 1px solid #ccc;
@@ -48,6 +48,11 @@ body {
     background-color: white;
     padding-bottom: 65px;
     border-bottom: 1px solid #363538;
+    display: flex;align-self: center;justify-content: center;
+    flex-direction: column;
+}
+.blocPadding {
+    padding:  0 20%;
 }
 .containerShowVoituresCard {
     display: flex;
@@ -157,4 +162,8 @@ img {
 }
 .blocFas a {
     color: white;
+}
+
+.goTo {
+    font-size: 14px;
 }
