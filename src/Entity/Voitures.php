@@ -60,7 +60,7 @@ class Voitures
     #[Assert\Length(max: 25, maxMessage:"Le titre ne peut pas excéder 25 caractères")]
     private ?string $Titre = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable:true)]
+    #[ORM\Column(nullable:true, type: Types::TEXT)]
     #[Assert\Length(max: 350, maxMessage:"La description ne peut pas excéder 350 caractères")]
     private ?string $description = null;
 
@@ -122,6 +122,7 @@ class Voitures
         }
     }
 
+    // ! Setters et Getters des champs d'entités
     public function getId(): ?int
     {
         return $this->id;
@@ -224,7 +225,7 @@ class Voitures
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -317,6 +318,7 @@ class Voitures
     {
         return $this->cylinder;
     }
+
 
     public function setCylinder(int $cylinder): self
     {

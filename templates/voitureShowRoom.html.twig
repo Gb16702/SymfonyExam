@@ -29,27 +29,50 @@
     {% endif %}
 
 {% endif %}
-
+<div class="grilleVoitures">
 {% for voiture in marques.voitures %}
+
+
+
 <div class="containerShowVoituresCard">
     <div class="containerShowVoituresImage">
+        <img src="{{ vich_uploader_asset(voiture.imagesVoitures[0], "imageFile") }}" alt="">
 
-         <div class="containerShowVoituresImagePlace" style = 'background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], "imageFile") }}); background-size:cover; background-position: center ;' ></div>
+         {# <div class="containerShowVoituresImagePlace" style = 'background-image: url({{ vich_uploader_asset(voiture.imagesVoitures[0], "imageFile") }}); background-size:cover; background-position: center ;' ></div> #}
     </div>
+    <div class="containerBottomEnglobe">
     <div class="containerShowVoituresInfo">
-    <div class="containerNom">
-       Nom : {{voiture.nom}}
+      <div class="containerNom">
+      {% if (app.user == voiture.user) or is_granted('ROLE_ADMIN') %}
+        <a class = "editI" href="{{path('app_voitures_edit', {id: voiture.id })}}"><i class="fa-solid fa-pen-to-square"></i></a>
+  {% else %}
+  {% endif %}
+      {{voiture.nom}}
+       {% if (app.user == voiture.user) or is_granted('ROLE_ADMIN') %}
+    <a class = "deleteI" href="{{path('app_voitures_delete', {id: voiture.id})}}"><i class="fa-solid fa-trash-can-arrow-up"></i></a>
+  {% else %}
+  {% endif %}
+      </div>
+     <div class="containerDesc">
+        {% if voiture.description %}
+          {{voiture.description}}
+        {% else %}
+          L'auteur de l'annonce n'a pas mis de description pour cette voiture
+        {% endif %}
+      </div>
+
+      <a class = "showVoituresLink" href="{{ path('app_cars', {slug: voiture.slug}) }}">Voir la voiture</a>
+      <div class="createdBy">
+      <a href="{{path('app_user', {slug:voiture.user.slug})}}">
+          <h5 class = "createdByH">Ajouté par <span>{{voiture.user.username }}</span></h5>
+        </a>
+      </div>
+
     </div>
-    <div class="containerKm">
-        Kilométrage : {{voiture.km}} km
-    </div>
-    <div class="containerPrix">
-        Prix : {{voiture.prix}} &euro;
-    </div>
-    <a class = "showVoituresLink" href="{{ path('app_cars', {slug: voiture.slug}) }}">Voir la voiture</a>
     </div>
 </div>
 {% endfor %}
+</div>
 </div>
  {# <div class="paginationContainer">
     {{ knp_pagination_render(marqueCard) }}
@@ -71,9 +94,9 @@
 
 
 {% include "./partials/footer.html.twig" %}
+{{encore_entry_link_tags('show')}}
+
 <script>
-
-
 function getCurrentURL () {
     return window.location.href
   }
@@ -132,6 +155,7 @@ function getCurrentURL () {
 </script>
 
    <script>
+
 $(document).ready(function() {
 
   var counters = $(".resultNumber");
@@ -149,7 +173,7 @@ $(document).ready(function() {
         localStart++;
         counters[id].innerHTML = localStart;
       }
-    }, 40);
+    }, 80);
   }
 
   for (j = 0; j < countersQuantity; j++) {
@@ -157,4 +181,17 @@ $(document).ready(function() {
   }
 });
     </script>
+    <script>
+{% for marque in marques %}
+  alert('ok')
+  if(window.location.href.indexOf({{marque.nom}}) > -1) {
+    alert('ok')
+    console.log('ok')
+  }else {
+    console.log({{marque.nom}})
+    console.log({{'ok'}})
+  }
+
+{% endfor %}
+</script>
 {% endblock %}

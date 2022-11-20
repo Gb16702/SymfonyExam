@@ -7,7 +7,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Proxies\__CG__\App\Entity\Marques;
 use Symfony\Flex\Response;
 
 /**

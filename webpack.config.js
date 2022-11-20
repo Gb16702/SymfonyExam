@@ -29,6 +29,7 @@ Encore
     .addEntry('formCars', './assets/styles/formCars.scss')
     .addEntry('userProfile', './assets/styles/userProfile.scss')
     .addEntry('voitureInfo', './assets/styles/voitureInfo.scss')
+    .addEntry('show', './assets/styles/showVoitures.scss')
 
 
 

@@ -16,6 +16,7 @@ class ImagesVoitures
     #[ORM\Column]
     private ?int $id = null;
 
+    // ! relation avec l'entité voiture
 
     #[Vich\UploadableField(mapping: 'voitures', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;

@@ -60,7 +60,7 @@ class VoituresController extends AbstractController
             $manager -> persist($voiture);
             $manager -> flush();
 
-            $flashy->success(  "La voiture {$voiture->getNom()} a bien été modifiée");
+            $flashy->success(  "La voiture {$voiture->getNom()} a bien été ajoutée");
 
 
 
@@ -93,7 +93,7 @@ class VoituresController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $voituresRepository->save($voiture, true);
 
-            $flashy->success(  "La voiture {$voiture->getNom()} a bien été ajoutée");
+            $flashy->success(  "La voiture {$voiture->getNom()} a bien été modifiée");
 
 
             return $this->redirectToRoute('app_brands', [], Response::HTTP_SEE_OTHER);

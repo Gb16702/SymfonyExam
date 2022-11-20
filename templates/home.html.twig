@@ -29,9 +29,18 @@
 			<div  class="containerHomeBodySlideA" style = 'background: white;'>
 				<div class="containerHomeBodySlideALeft">
 					<div class="containerHomeBodySlideALeftBloc" data-aos = 'fade-right' data-aos-offset="30" data-aos-easing="ease-in-sine">
+					{% if voiture.titre %}
 						  <h2>{{voiture.nom}} : {{ voiture.titre }}</h2>
+					{% else %}
+						<h2>{{voiture.nom}}</h2>
+					{% endif %}
+					{% if voiture.description %}
 						<h3 class="description">{{ voiture.description | raw }}</h3>
-						<a class = "linkToCar" href="#" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine" >Découvrir {{ voiture.nom }}</a>
+					{% else %}
+						<h3 class="description">Le propriétaire n'a pas mis de description pour cette voiture</h3>
+					{% endif %}
+
+						<a class = "linkToCar" href="{{path('app_cars', {slug:voiture.slug})}}" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine" >Découvrir {{ voiture.nom }}</a>
 						<h4>Carburant de la voiture : <span>{{ voiture.carburant }}</span></h4>
 					</div>
 				</div>
@@ -49,7 +58,7 @@
 					<div class="containerHomeBodySlideALeftBloc2" data-aos = 'fade-left' data-aos-offset="30" data-aos-easing="ease-in-sine">
 						 <h2>{{voiture.nom }} : {{voiture.titre  }}</h2>
 						<h3 class="description">{{ voiture.description | raw }}</h3>
-						<a class = "linkToCar" href="#" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine">Décourvrir {{ voiture.nom  }}</a>
+						<a class = "linkToCar" href="{{path('app_cars', {slug:voiture.slug})}}" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine">Découvrir {{ voiture.nom  }}</a>
 						<h4>Carburant de la voiture :  <span>{{ voiture.carburant }}</span></h4>
 					</div>
 				</div>
