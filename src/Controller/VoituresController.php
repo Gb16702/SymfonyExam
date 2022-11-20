@@ -85,13 +85,16 @@ class VoituresController extends AbstractController
     }
 
     #[Route('/myProfile/{id}/edit', name: 'app_voitures_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, FlashyNotifier $flashy): Response
+    public function edit(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, FlashyNotifier $flashy, EntityManagerInterface $manager): Response
     {
         $form = $this->createForm(VoituresType::class, $voiture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $voituresRepository->save($voiture, true);
+
+            $manager -> persist($voiture);
+            $manager -> flush();
 
             $flashy->success(  "La voiture {$voiture->getNom()} a bien été modifiée");
 

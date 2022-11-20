@@ -62,8 +62,16 @@
                 <h3>Description</h3>
             </div>
             <div class="blocGridContentBlocContentRightBottom">
+            {% if voiture.description %}
                 <h4 class = hDesc>{{voiture.description}}</h4>
                 <p class = "readMore" id = "r">Lire la suite</p>
+                {% else %}
+                    <h4>Pas de description</h4>
+                    {% if app.user == voiture.user %}
+                        <a class = "addLink" style = "text-decoration: none; color: #52cf97; transition: .3s ease" href="{{path('app_voitures_edit', {id:voiture.id})}}"><p>En ajouter une</p></a>{% else %}
+                            En ajouter une
+                    {% endif %}
+            {% endif %}
             </div>
         </div>
     </div>
@@ -120,9 +128,9 @@
                     Pas de propriétaire
                     {% else %}
                          {% if voiture.owner > 1 %}
-                            {{voiture.owner}} propriétaire
-                        {% else %}
                             {{voiture.owner}} propriétaires
+                        {% else %}
+                            {{voiture.owner}} propriétaire
                         {% endif %}
                     {% endif %}
                 </h4>
@@ -169,7 +177,12 @@
             </div>
             <div class="blocGridContentBlocContentRightBottom">
                 <h4>
+                {% if voiture.cylinder > 1 %}
+                    {{voiture.cylinder}} litres
+                    {% else %}
                     {{voiture.cylinder}} litre
+                {% endif %}
+
                 </h4>
             </div>
         </div>
@@ -211,6 +224,6 @@
             const str ={{voiture.description | json_encode() | raw}}
             const length = str.length
     </script>
-    
+
 
 {% endblock %}

@@ -134,7 +134,7 @@ $view: 100vh;
 					}
 				}
 
-				a {
+				.linkToCar {
 					text-decoration: none;
 					color: $grey;
 					padding: 15px;
@@ -231,7 +231,7 @@ $view: 100vh;
 		opacity: .7;
 		color: grey;
 	}
-	a {
+	.linkToCar {
 		text-decoration: none;
 		color: $grey;
 		padding: 15px;

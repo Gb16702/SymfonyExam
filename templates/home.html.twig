@@ -41,7 +41,7 @@
 					{% endif %}
 
 						<a class = "linkToCar" href="{{path('app_cars', {slug:voiture.slug})}}" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine" >Découvrir {{ voiture.nom }}</a>
-						<h4>Carburant de la voiture : <span>{{ voiture.carburant }}</span></h4>
+					<h4>Ajouté par <a class = "NB" href="{{path('app_user', {slug:voiture.user.slug})}}"><span>{{voiture.user.username}}</span></a></h4>
 					</div>
 				</div>
 				<div class="containerHomeBodySlideARight" >
@@ -59,7 +59,7 @@
 						 <h2>{{voiture.nom }} : {{voiture.titre  }}</h2>
 						<h3 class="description">{{ voiture.description | raw }}</h3>
 						<a class = "linkToCar" href="{{path('app_cars', {slug:voiture.slug})}}" data-aos = 'zoom-in' data-aos-offset="20" data-aos-easing="ease-in-sine">Découvrir {{ voiture.nom  }}</a>
-						<h4>Carburant de la voiture :  <span>{{ voiture.carburant }}</span></h4>
+						<h4>Ajouté par <a class = "NB" href="{{path('app_user', {slug:voiture.user.slug})}}"><span>{{voiture.user.username}}</span></a></h4>
 					</div>
 				</div>
 			</div>

@@ -7,6 +7,7 @@ use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -16,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['username'], message: 'Un autre utilisateur possède déjà ce nom, merci de le modifier')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, Serializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -184,5 +185,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    
+
+    // ! Serialization pour éviter l'erreur de Serialization que cause vich lorsqu'un utilisateur clique sur le profil d'un autre
+    public function serialize()
+{
+    return serialize(array(
+        $this->id,
+        $this->username,
+        $this->password,
+    ));
+}
+
+public function unserialize($serialized)
+{
+    list (
+        $this->id,
+        $this->username,
+        $this->password,
+    ) = unserialize($serialized);
+}
 }

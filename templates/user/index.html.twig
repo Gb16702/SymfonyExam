@@ -11,9 +11,13 @@
 </div>
 <div class="userProfileBloc">
 <h2 class = "welcomeMessage">
+    {% if app.user == user %}
     Bonjour, {{user.username}}
-</h2>
+    {% else %}
+        Profil de {{user.username}}
+    {% endif %}
 
+</h2>
 
 
     {% if user.picture is null %}
@@ -25,8 +29,10 @@
     {% endif %}
 
 <div class="form-group-user">
+    {% if app.user == user %}
 <a class = "addCar" href="{{path('app_voitures_new', {slug: user.slug})}}">Ajouter une voiture</a>
 <a class = "changePic" href="{{path('user_imgEdit', {slug: user.slug})}}">Changer d'image</a>
+    {% endif %}
     {# {{form_start(myForm)}}
          {{form_widget(myForm)}}
             <button type="submit" class="btn btn-warning">Confirmez la modification de l'avatar</button>
@@ -37,11 +43,21 @@
 <div class="userProfileBloc2">
 
 {% if user.userVoiture | length %}
-    {% if user.userVoiture | length > 1 %}
-            <p class = "text-center">Vous avez ajouté {{user.userVoiture | length}} voitures</p>
+    {% if app.user == user %}
+        {% if user.userVoiture | length > 1 %}
+        <p class = "text-center">Vous avez ajouté {{user.userVoiture | length}} voitures</p>
         {% else %}
             <p class = "text-center">Vous avez ajouté {{user.userVoiture | length}} voiture</p>
     {% endif %}
+    {% endif %}
+    {% if app.user != user %}
+        {% if user.userVoiture | length > 1 %}
+        <p class = "text-center">{{user.username}} a ajouté {{user.userVoiture | length}} voitures</p>
+        {% else %}
+            <p class = "text-center">{{user.username}} a ajouté {{user.userVoiture | length}} voiture</p>
+    {% endif %}
+    {% endif %}
+
 
 <div class="grid">
 
@@ -53,13 +69,18 @@
         <div class="cardUserBottom">
         <div class = "cardUserBottomInfoCarBlock">
         <div class="userBottomInfoCarIconsBlock">
+        {% if (app.user == user) or is_granted('ROLE_ADMIN') %}
         <a class = "editI" href="{{path('app_voitures_edit', {id: voiture.id })}}"><i class="fa-solid fa-pen-to-square"></i></a>
+        {% endif %}
             </div>
             <div class="cardUserBottomInfoCar">
                 {{voiture.nom}}
             </div>
             <div class="userBottomInfoCarIconsBlock">
+        {% if (app.user == user) or is_granted('ROLE_ADMIN') %}
             <a class = "deleteI" href="{{path('app_voitures_delete', {id: voiture.id})}}"><i class="fa-solid fa-trash-can-arrow-up"></i></a>
+        {% endif %}
+
             </div>
         </div>
         <div class="cardUserBottomAction">
@@ -73,8 +94,13 @@
     {% else %}
     <div class="blocAddCar">
         <div class="containerAddCar">
+        {% if app.user == user %}
             <h2 class = "h2AddCar">Vous n'avez pas encore ajouté de voiture.</h2>
             <a class = "aAddCar" href="{{path('app_voitures_new', {slug: user.slug})}}">Cliquez ici pour en ajouter une</a>
+            {% else %}
+                 <h2 class = "h2AddCar">{{user.username}} n'a pas encore ajouté de voiture</h2>
+                <a class = "aAddCar" href="{{path('app_voitures_new', {slug: user.slug})}}">Rendez-vous sur votre profil pour en ajouter une</a>
+        {% endif %}
         </div>
     </div>
 {% endif %}
@@ -85,3 +111,4 @@
 {{ encore_entry_link_tags('userProfile') }}
 {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 {% endblock %}
+
