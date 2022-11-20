@@ -22,6 +22,9 @@ $view: 100vh;
 	-webkit-font-smoothing: antialiased;
 	}
 
+	.NB {
+		text-decoration: none;
+	}
 
 .typed-cursor {
 	display: none;
@@ -281,4 +284,5 @@ $view: 100vh;
         .containerHomeBodySlideARight {
             align-items: flex-end;
         }
+
 	}
