@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\MarquesRepository;
 use App\Repository\PartialsRepository;
+use App\Repository\UserRepository;
 use App\Repository\VoituresRepository;
 use App\Repository\ImagesVoituresRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +31,14 @@ class HomeController extends AbstractController {
             ]),
         ]);
     }
+    #[Route('/membres', 'membres', methods: ['GET'])]
+    public function list(UserRepository $user): Response {
+        return $this -> render('userList.html.twig', [
+            'users' => $user -> findAll()
+        ]);
+    }
 
+    // public function list()
     // public function footer(MarquesRepository $footer): Response {
     //     return $this->render('home.html.twig', [
     //         "footer" => $footer->find(1),

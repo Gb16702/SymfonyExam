@@ -54,7 +54,7 @@
         </tbody>
     </table>
 
-     <a class = "backToList" href="{{path('home')}}">Revenir à la page principale</a>
+     <a class = "backToList" href="{{path('app_user', {slug: app.user.slug})}}">Revenir sur mon profil</a>
 
     <a class = "editCar" href = "{{ path('app_voitures_edit', {'id': voiture.id}) }}">Modifier</a>
 
@@ -62,5 +62,5 @@
 
 			{{ encore_entry_link_tags('formCars') }}
 
-       
+
 {% endblock %}

@@ -17,8 +17,13 @@
     {% for marque in marqueCard %}
         <div class="brandsCard">
             <div class="brandsCardTop">
+
+
+
+              {# {% if marque.imageName != "https://api.lorem.space/image/car?w=1920&h=1080" %} #}
              <div class="brandsCardImage" style = "background-image: url({{ vich_uploader_asset(marque, 'imageFile') }}); background-size: cover; background-position: center;"></div>
             </div>
+            {# {% endif %} #}
             <div class="brandCardBottom">
                     <h2>{{ marque.nom | capitalize }}</h2>
                     <a href="{{ path('app_showRoom', {slug: marque.slug}) }}">Visiter la marque</a>
@@ -53,6 +58,7 @@ function getCurrentURL () {
   nav.style.position = "relative"
   nav.style.backgroundColor = "rgb(21,21,21)"
 
+let blocIF = document.querySelector('.blocIconFas')
 
 
   let white = "rgb(231, 231, 231)"
@@ -67,6 +73,7 @@ function getCurrentURL () {
   if(window.location.href.indexOf("marques") > -1) {
     footer.style.backgroundColor = background
     footer.style.borderTop = "3px solid white"
+    blocIF.style.color = "white"
 
     var bloc2Before = window.getComputedStyle(bloc2, "::before")
     console.log(bloc2Before.backgroundColor)

@@ -5,29 +5,36 @@
 
 {% include "./partials/header.html.twig" %}
 
+{% if marques.voitures | length > 0 %}
 <div class="containerShowVoitures">
 
 <div class="containerShowVoituresBloc">
-{% if marques.voitures | length > 0 %}
  <h4 class="result">Résultat : <span class="resultNumber">{{marques.voitures  | length}}</span> {{marques.nom}}</h4>
 {% else %}
+<div class="sous-body">
 <div class="blocPadding">
   <div class="containerMessage">
-      <h4>
-          Il n'y a actuellement pas de voiture pour cette marque
-      </h4>
+    <div class="blocMessageRedirect">
+        <h4>
+            Il n'y a actuellement pas de voiture pour cette marque
+        </h4>
           {% if app.user %}
               <h4 class = "goTo">Rendez-vous sur votre <a href="{{path('app_user', {slug:app.user.slug})}}"><span> profil </span></a>pour en ajouter une</h4>
             {% else %}
               <h4>
-            <a href="{{path('app_login')}}">
+                <a href="{{path('app_login')}}">
                 <span>Connectez-vous</span></a> pour en ajouter une
               </h4>
+    {% endif %}
+      </div>
   </div>
 </div>
-    {% endif %}
-
+</div>
 {% endif %}
+
+{% if marques.voitures | length > 0 %}
+
+
 <div class="grilleVoitures">
 {% for voiture in marques.voitures %}
 
@@ -72,6 +79,7 @@
 </div>
 {% endfor %}
 </div>
+{% endif %}
 </div>
  {# <div class="paginationContainer">
     {{ knp_pagination_render(marqueCard) }}

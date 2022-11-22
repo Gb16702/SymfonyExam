@@ -45,16 +45,16 @@
 {% if user.userVoiture | length %}
     {% if app.user == user %}
         {% if user.userVoiture | length > 1 %}
-        <p class = "text-center">Vous avez ajouté {{user.userVoiture | length}} voitures</p>
+        <p class = "text-center">Vous avez ajouté <span class="counterProfile">{{user.userVoiture | length}}</span> voitures</p>
         {% else %}
-            <p class = "text-center">Vous avez ajouté {{user.userVoiture | length}} voiture</p>
+            <p class = "text-center">Vous avez ajouté <span class="counterProfile">{{user.userVoiture | length}}</span> voiture</p>
     {% endif %}
     {% endif %}
     {% if app.user != user %}
         {% if user.userVoiture | length > 1 %}
-        <p class = "text-center">{{user.username}} a ajouté {{user.userVoiture | length}} voitures</p>
+        <p class = "text-center">{{user.username}} a ajouté <span class="counterProfile">{{user.userVoiture | length}}</span> voitures</p>
         {% else %}
-            <p class = "text-center">{{user.username}} a ajouté {{user.userVoiture | length}} voiture</p>
+            <p class = "text-center">{{user.username}} a ajouté <span class="counterProfile">{{user.userVoiture | length}}</span> voiture</p>
     {% endif %}
     {% endif %}
 
@@ -99,7 +99,7 @@
             <a class = "aAddCar" href="{{path('app_voitures_new', {slug: user.slug})}}">Cliquez ici pour en ajouter une</a>
             {% else %}
                  <h2 class = "h2AddCar">{{user.username}} n'a pas encore ajouté de voiture</h2>
-                <a class = "aAddCar" href="{{path('app_voitures_new', {slug: user.slug})}}">Rendez-vous sur votre profil pour en ajouter une</a>
+                <h5 class = "aAddCar" href="{{path('app_voitures_new', {slug: user.slug})}}">Il devrait en ajouter une bientôt...</h5>
         {% endif %}
         </div>
     </div>
@@ -110,5 +110,34 @@
 {% include "./partials/footer.html.twig" %}
 {{ encore_entry_link_tags('userProfile') }}
 {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+       <script>
+
+$(document).ready(function() {
+
+  var counters = $(".counterProfile");
+  var countersQuantity = counters.length;
+  var counter = [];
+
+  for (i = 0; i < countersQuantity; i++) {
+    counter[i] = parseInt(counters[i].innerHTML);
+  }
+
+  var count = function(start, value, id) {
+    var localStart = start;
+    setInterval(function() {
+      if (localStart < value) {
+        localStart++;
+        counters[id].innerHTML = localStart;
+      }
+    }, 40);
+  }
+
+  for (j = 0; j < countersQuantity; j++) {
+    count(0, counter[j], j);
+  }
+});
+    </script>
+
 {% endblock %}
 

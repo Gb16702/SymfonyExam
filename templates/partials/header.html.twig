@@ -15,7 +15,7 @@
 					<a class="link" href="{{ path('app_brands') }}">Marques</a>
 				</li>
 				<li>
-					<a class="link" href="#">Contact</a>
+					<a class="link" href="{{path('membres')}}">Membres</a>
 				</li>
 				<li>
 				{% if app.user == true %}
@@ -28,7 +28,7 @@
 		</div>
 		<div class="blocFas">
 		 {% if app.user %}
-			<a href="{{ path('app_user', {slug: app.user.slug}) }}"><i class="fa-solid fa-user"></i></a>
+			<a class = "blocIconFas"  href="{{ path('app_user', {slug: app.user.slug}) }}"><i class="fa-solid fa-user"></i></a>
 			{% else %}
 			<a href="{{ path('app_login')}}" style = "visibility : hidden"><i class="fa-solid fa-user"></i></a>
 		{% endif %}

@@ -1,0 +1,128 @@
+body {
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    margin-bottom: 390px;
+    border-bottom: 1px solid #52cf97;
+}
+
+.hBloc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h2 {
+    height: 70px;
+    color: #52cf97;
+    text-align: center;
+}
+// ! Nav
+.containerNav {
+    position: relative;
+}
+
+.containerNav nav .containerUl {
+    max-width: 88%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.containerNav nav ul {
+    margin: 0;
+    padding: 0;
+}
+.containerNav nav ul li a {
+    text-shadow: none;
+    transition: all .4s;
+    filter: none;
+}
+.containerNav nav ul li:hover {
+    filter: none;
+}
+.containerNav nav ul li a:hover {
+    color: #52cf97;
+}
+.blocFas a {
+    color: #52cf97;
+}
+.FIG3 {
+    display: none;
+}
+.Info {
+    display: block;
+}
+
+//! content
+.grilleUserContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: calc(100vh - 142px);
+
+
+}
+.grilleUser {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns:1fr 1fr 1fr;
+    width: 100%;
+    gap: 10px;
+    padding: 100px;
+}
+.card {
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 1px solid #52cf97;
+    border-radius: 3px;
+}
+.cardTop {
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;width: 100%;
+    padding: 50px;
+}
+.cardBottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 65px;
+}
+.userProfilePicture {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+.h1Cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 65px;
+}
+h1 {
+    color: #52cf97;
+    font-size: 24px;
+    width: 100%;
+    text-align: center;
+}
+.cardBottom a {
+    color: #52cf97;
+}
+
+.role {
+    color: white;
+}
+
+.countUsers {
+    color: white;
+}

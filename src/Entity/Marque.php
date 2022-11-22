@@ -8,12 +8,15 @@ use App\Repository\MarquesRepository;
 use Doctrine\Common\Collections\Collection;
 use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Cocur\Slugify\Slugify;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
+
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: MarquesRepository::class)]
 #[Vich\Uploadable]
 
@@ -38,8 +41,6 @@ class Marque
 
 
 
-    #[ORM\Column(type: 'datetime')]
-    private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\Column(length: 100)]
     private ?string $slug = null;
@@ -47,6 +48,17 @@ class Marque
     public function __construct()
     {
         $this->voitures = new ArrayCollection();
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function initializeSlug():void
+    {
+        if(empty($this->slug))
+        {
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->nom);
+        }
     }
 
     public function getId(): ?int
@@ -100,11 +112,7 @@ class Marque
     {
         $this->imageFile = $imageFile;
 
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
+
     }
 
     public function getSlug(): ?string

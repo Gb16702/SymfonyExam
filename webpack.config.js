@@ -30,6 +30,8 @@ Encore
     .addEntry('userProfile', './assets/styles/userProfile.scss')
     .addEntry('voitureInfo', './assets/styles/voitureInfo.scss')
     .addEntry('show', './assets/styles/showVoitures.scss')
+    .addEntry('imgEdit', './assets/styles/imgEdit.scss')
+    .addEntry('membres', './assets/styles/membres.scss')
 
 
 

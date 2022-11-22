@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+{% include "partials/header.html.twig" %}
+<div class="hBloc">
+    <h2>La liste des utilisateurs</h2>
+    <h4 class = "countUsers">Il y a {{users | length}} utilisateurs inscrits</h4>
+</div>
+
+<div class="grilleUserContainer">
+<div class="grilleUser">
+{% for user in users %}
+<div class="card">
+    <div class="h1Cont">
+            {% if app.user == user %}
+            <h1>Vous</h1>
+            {% else %}
+            <h1>{{user.username}}</h1>
+            {% endif %}
+        </div>
+        {% if user.roles[0] == 'ROLE_ADMIN' %}
+            <p class="role">Administrateur</p>
+        {% else %}
+            <p class="role">Utilisateur</p>
+
+        {% endif %}
+    <div class="cardTop">
+         <div class="userProfilePicture" style = "background-image: url('https://picsum.photos/300/300'); background-size:cover; background-repeat: no-repeat"></div>
+    </div>
+    <div class="cardBottom">
+    {% if app.user == user %}
+        <a href="{{path('app_user', {slug:user.slug})}}">Voir votre profil</a>
+            {% else %}
+        <a href="{{path('app_user', {slug:user.slug})}}">Voir le profil</a>
+    {% endif %}
+
+    </div>
+</div>
+{{encore_entry_link_tags('membres')}}
+{% endfor %}
+</div>
+</div>
+{% endblock %}

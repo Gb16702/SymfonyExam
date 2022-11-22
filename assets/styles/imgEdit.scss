@@ -1,0 +1,49 @@
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.blocPhoto {
+    background-color: #1a1a1a;
+    width: 500px;height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.blocPhoto h2 {
+    color: #52cf97;
+
+}
+.blocPhotoTop{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blocPhotoTop .userProfilePicture {
+    height: 120px;
+    width: 120px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    border: 2px solid #52cf97;
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.blocPhotoBot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blocPhotoBot a {
+    color: #52cf97;
+    text-decoration: none;
+    transition: all .3s;
+    &:hover {
+        filter: brightness(1.3);
+    }
+}

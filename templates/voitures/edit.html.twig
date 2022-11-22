@@ -5,7 +5,7 @@
     <h1>Edit Voitures</h1>
     {{ include('voitures/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a class = "backToList" href="{{ path('home') }}">Revenir à la page d'accueil</a>
+    <a class = "backToList" href="{{ path('app_user', {slug:app.user.slug}) }}">Revenir sur mon profil</a>
 
     {{ include('voitures/_delete_form.html.twig') }}
 			{{ encore_entry_script_tags('formCars') }}
