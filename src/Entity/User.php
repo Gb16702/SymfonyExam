@@ -186,7 +186,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
         return $this;
     }
 
-    // ! Serialization pour éviter l'erreur de Serialization que cause vich lorsqu'un utilisateur clique sur le profil d'un autre
+    // ! Serialization pour éviter l'erreur de Serialization que m'a causé vich lorsqu'un utilisateur clique sur le profil d'un autre
     public function serialize()
 {
     return serialize(array(

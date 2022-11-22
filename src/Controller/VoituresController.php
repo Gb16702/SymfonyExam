@@ -25,6 +25,8 @@ class VoituresController extends AbstractController
     //         'voitures' => $voituresRepository->findAll(),
     //     ]);
     // }
+
+    //! le crud créé en faisant bin/console make:crud afin de pouvoir ajouter, supprimer ou éditer une voiture (si admin ou propriétaire de l'annonce)
     #[Route('/marques/{slug}', name: 'app_detail_voiture')]
     public function index(): Response
     {
@@ -32,7 +34,7 @@ class VoituresController extends AbstractController
             'controller_name' => 'DetailVoitureController',
         ]);
     }
-
+    //! La route vers new pour la création de la nouelle voiture
     #[Route('/new/{slug}', name: 'app_voitures_new', methods: ['GET', 'POST'])]
     public function new(Request $request, VoituresRepository $voituresRepository, UserRepository $userRepo, User $user, FlashyNotifier $flashy, EntityManagerInterface $manager): Response
     {
@@ -60,6 +62,7 @@ class VoituresController extends AbstractController
             $manager -> persist($voiture);
             $manager -> flush();
 
+            //! getNom est une méthode permettant de récupérer le nom de la voiture grâce au getter dans mon entité
             $flashy->success(  "La voiture {$voiture->getNom()} a bien été ajoutée");
 
 
@@ -76,6 +79,7 @@ class VoituresController extends AbstractController
         ]);
     }
 
+
     #[Route('/{id}', name: 'app_voitures_show', methods: ['GET'])]
     public function show(Voitures $voiture): Response
     {
@@ -83,7 +87,7 @@ class VoituresController extends AbstractController
             'voiture' => $voiture,
         ]);
     }
-
+    //! permet de modifier une voiture
     #[Route('/myProfile/{id}/edit', name: 'app_voitures_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, FlashyNotifier $flashy, EntityManagerInterface $manager): Response
     {
@@ -107,7 +111,7 @@ class VoituresController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    //! permet de supprimer une voiture
     #[Route('/{id}', name: 'app_voitures_delete', methods: ['POST'])]
     public function delete(Request $request, Voitures $voiture, VoituresRepository $voituresRepository, FlashyNotifier $flashy): Response
     {
@@ -115,8 +119,9 @@ class VoituresController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$voiture->getId(), $request->request->get('_token'))) {
             $voituresRepository->remove($voiture, true);
         }
-        $referer = $request->headers->get('referer');
         $flashy->warning(  "La voiture {$voiture->getNom()} a bien été supprimée");
         return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+
+        //! http see other -> réponse 303 qui me rediriger vers ma route home après suppression d'une voiture
     }
 }

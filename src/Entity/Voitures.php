@@ -113,6 +113,8 @@ class Voitures
 
     #[ORM\PrePersist]
     #[ORM\PreUpdate]
+
+    //! slugify pour mettre à jour le slug automatiquement par rapport au nom de la voiture, auquel on rajoutera un uniqid dans le cas où on aurait plusieurs fois la même voiture, c'est aussi beaucoup plus sécurisé d'utiliser slugify plûtot que de mettre un champs de slug dans un fom
     public function initializeSlug():void
     {
         if(empty($this->slug))
@@ -327,5 +329,5 @@ class Voitures
         return $this;
     }
 
-    
+
 }

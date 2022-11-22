@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
         $users = [];
 
         // ! fixtures User
-        for($u =  1; $u <=10; $u ++)
+        for($u =  1; $u <=25; $u ++)
         {
         $usernameArray = [
             'Jordan', 'Ludo', 'Astrid', 'Axel', 'Benoit', 'Simon', 'Gauthier', 'La Directrice', 'La prof de Com','L\'équipe Nationale d\'Italie'
@@ -95,7 +95,7 @@ class AppFixtures extends Fixture
 
     //!fixtures voitures
 
-for($v = 1; $v <=35; $v ++)
+for($v = 1; $v <=60; $v ++)
 {
         $voiture = new Voitures();
         $user =  $users[rand(0, count($users)-1)];
@@ -132,21 +132,16 @@ for($v = 1; $v <=35; $v ++)
 
         //! fixtures images voitures
         $images = [
-            // '7e29d14a76d5f925b268e62efc79461d.webp',
-            // '8b8646a8550f058cf3170269d236736f.webp',
-            // 'f073c17de6cc7b883a1752522c19fd4c.jpg',
-            // 'ec588bcfe3bdbb487b2a394e61636c08.webp',
             'Mercedes1.jpg',
             'AFT1.jpg',
             'BMW1.jpg',
             'Ferrari2.jpg',
             'Ferrari1.jpg',
-            'Mercedes3.jpg',
-            'Porsche1.jpg',
             'Mercedes2.webp',
-            'Nissan1.png',
-            'Nissan2.jpg',
-            // '858b15906342c1bee1f7dbf71d5aa25d.jpg'
+            '0eb714117e968b8edb6eb93b4d1825be.jpg',
+            'porschetaycan-6368cea68e831156242936.jpg',
+            'c0a463931afdf7611ac3a3e4d576535d.webp',
+            'audi-tt-rs-2-6361a1c13710d278046258.webp'
         ];
         // ! pour choisir l'image de couverture qui représente la première occurence du tableau, je fais un rand parmis les images du tableau
         $images[0] = $images[rand(0,9)];
@@ -195,16 +190,17 @@ for($v = 1; $v <=35; $v ++)
 
     //! fixtures images voitures
     $images = [
-        '7e29d14a76d5f925b268e62efc79461d.webp',
-        '8b8646a8550f058cf3170269d236736f.webp',
-        'mercedes-2-6361df35e424f162786475.jpg',
-        'f073c17de6cc7b883a1752522c19fd4c.jpg',
-        'ec588bcfe3bdbb487b2a394e61636c08.webp',
-        'audi-tt-rs-5-63647f4a8e680646988240.jpg',
-        'audi-r8-3-635984f52dc74658761477.jpg',
-        'audi-r8-1-635b45902ea5d876518922.jpg',
-        'alfa-romeo-giulia-1-6356a36d76ebe321663720.jpg',
-        '858b15906342c1bee1f7dbf71d5aa25d.jpg'
+
+        'hompage-car-e-6356a28b79738100008755.jpg',
+        'd43e7fc24056059ae0643216507c159e.jpg',
+        'audi-tt-rs-5-63647fcfbf5bf500700607.jpg',
+        '7e681cf478df37261e673f05c8e1aebd.jpg',
+        'Mercedes1.jpg',
+        'Ferrari1.jpg',
+        'Ferrari2.jpg',
+        'BMW1.jpg',
+        'AFT1.jpg',
+        'Mercedes2.webp'
     ];
     // ! pour choisir l'image de couverture qui représente la première occurence du tableau, je fais un rand parmis les images du tableau
     $images[0] = $images[rand(0,9)];

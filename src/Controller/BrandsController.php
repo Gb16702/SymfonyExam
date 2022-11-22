@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+//! création marques
 class BrandsController extends AbstractController
 {
     #[Route('/marques', name: 'app_brands', methods: ['GET'])]
@@ -27,6 +28,7 @@ class BrandsController extends AbstractController
         ]);
     }
 
+    //! pour aller sur la marque en question dans le but d'afficher les voitures correspondantes grâce à une relation
     #[Route('/marques/{slug}', name: 'app_showRoom')]
 
     public function voituresShowRoom(EntityManagerInterface $em, PaginatorInterface $paginator, MarquesRepository $marqueRepo, VoituresRepository $repository, Marque $marques, Request $request, PaginatorInterface $paginatorInterface, MarquesRepository $marque, UserRepository $userRepository, $slug): Response
@@ -48,6 +50,8 @@ class BrandsController extends AbstractController
             ])
         ]);
      }
+
+     //! afficher une voiture précisément
      #[Route('/cars/{slug}', name: 'app_cars', methods: ['GET'])]
 
      public function carsDetails(Voitures $voiture): Response

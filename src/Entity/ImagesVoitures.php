@@ -28,7 +28,7 @@ class ImagesVoitures
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
-
+    //! relation voitures - images -> many to one car une voiture peut avoit plusieurs images mais une image ne peut pas être avec plusieurs voitures
     #[ORM\ManyToOne(inversedBy: 'imagesVoitures')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Voitures $voitures = null;

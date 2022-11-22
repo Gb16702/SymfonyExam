@@ -16,6 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+
+// !la page profil
 class UserController extends AbstractController
 {
     #[Route('/myProfile/{slug}', name: 'app_user')]
@@ -32,6 +34,7 @@ class UserController extends AbstractController
          ]);
      }
 
+     //! la page profil, mais une route menant à une section pour changer son image de profil
     #[Route("/myProfile/{slug}/image", name:"user_imgEdit")]
     #[IsGranted("ROLE_USER")]
 
