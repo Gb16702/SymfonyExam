@@ -1,0 +1,107 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_arra-f98d0d.js",
+        "/build/vendors-node_modules_bootstrap_dist_js_bootstrap_bundle_js-node_modules_core-js_modules_es_ar-30acd0.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "form": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_arra-f98d0d.js",
+        "/build/form.js"
+      ]
+    },
+    "register": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_arra-f98d0d.js",
+        "/build/register.js"
+      ]
+    },
+    "logo": {
+      "js": [
+        "/build/runtime.js",
+        "/build/logo.js"
+      ]
+    },
+    "registerForm": {
+      "js": [
+        "/build/runtime.js",
+        "/build/registerForm.js"
+      ],
+      "css": [
+        "/build/registerForm.css"
+      ]
+    },
+    "error": {
+      "js": [
+        "/build/runtime.js",
+        "/build/error.js"
+      ],
+      "css": [
+        "/build/error.css"
+      ]
+    },
+    "formCars": {
+      "js": [
+        "/build/runtime.js",
+        "/build/formCars.js"
+      ],
+      "css": [
+        "/build/formCars.css"
+      ]
+    },
+    "userProfile": {
+      "js": [
+        "/build/runtime.js",
+        "/build/userProfile.js"
+      ],
+      "css": [
+        "/build/userProfile.css"
+      ]
+    },
+    "voitureInfo": {
+      "js": [
+        "/build/runtime.js",
+        "/build/voitureInfo.js"
+      ],
+      "css": [
+        "/build/voitureInfo.css"
+      ]
+    },
+    "show": {
+      "js": [
+        "/build/runtime.js",
+        "/build/show.js"
+      ],
+      "css": [
+        "/build/show.css"
+      ]
+    },
+    "imgEdit": {
+      "js": [
+        "/build/runtime.js",
+        "/build/imgEdit.js"
+      ],
+      "css": [
+        "/build/imgEdit.css"
+      ]
+    },
+    "membres": {
+      "js": [
+        "/build/runtime.js",
+        "/build/membres.js"
+      ],
+      "css": [
+        "/build/membres.css"
+      ]
+    }
+  }
+}
