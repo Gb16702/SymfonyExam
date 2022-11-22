@@ -32,6 +32,7 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('SymfonyApp');
     }
 
+    //! "navigation" de l'admin
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');

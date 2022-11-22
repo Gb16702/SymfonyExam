@@ -28,7 +28,7 @@ class VoituresCrudController extends AbstractCrudController
         return Voitures::class;
     }
 
-
+//!crud voitures
     public function configureFields(string $pageName): iterable
     {
         return [

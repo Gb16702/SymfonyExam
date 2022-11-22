@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: VoituresRepository::class)]
 #[Vich\Uploadable]
 
+//! asserts, création des champs
 class Voitures
 {
     #[ORM\Id]
@@ -304,6 +305,7 @@ class Voitures
         return $this;
     }
 
+    //! datetimeinterface accepte un datetime immutable ou datetime
     public function getYear(): ?\DateTimeInterface
     {
         return $this->Year;

@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
+
+//!crud partials
 class PartialsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
